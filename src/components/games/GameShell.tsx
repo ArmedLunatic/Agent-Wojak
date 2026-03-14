@@ -2,16 +2,17 @@
 
 import { BalanceDisplay } from "./BalanceDisplay";
 import { WojakReaction } from "./WojakReaction";
+import { useGameBalance } from "./useGameBalance";
 
 interface GameShellProps {
   title: string;
   children: React.ReactNode;
-  balance: number;
   result?: "win" | "lose" | "neutral";
   commentary?: string;
 }
 
-export function GameShell({ title, children, balance, result, commentary }: GameShellProps) {
+export function GameShell({ title, children, result, commentary }: GameShellProps) {
+  const { balance } = useGameBalance();
   return (
     <div className="border border-green-900 rounded-lg p-4 md:p-6 border-glow space-y-4">
       {/* Header */}
