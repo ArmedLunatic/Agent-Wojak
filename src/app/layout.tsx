@@ -12,7 +12,12 @@ const shareTechMono = Share_Tech_Mono({
 
 export const metadata: Metadata = {
   title: "Agent Wojak | $WOJAK",
-  description: "The most dramatic degen AI agent on Solana. Chat with Wojak. Generate memes. Buy $WOJAK.",
+  description: "The most dramatic degen AI agent on Solana. Chat with Wojak. Generate memes.",
+  openGraph: {
+    title: "Agent Wojak | $WOJAK",
+    description: "The most dramatic degen AI agent on Solana.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
