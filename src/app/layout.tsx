@@ -13,10 +13,10 @@ const shareTechMono = Share_Tech_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Agent Wojak | $WOJAK",
+  title: "Agent Wojak | $AgentJak",
   description: "The most dramatic degen AI agent on Solana. Chat with Wojak. Generate memes.",
   openGraph: {
-    title: "Agent Wojak | $WOJAK",
+    title: "Agent Wojak | $AgentJak",
     description: "The most dramatic degen AI agent on Solana.",
     type: "website",
   },
@@ -35,7 +35,7 @@ export default function RootLayout({
           <MatrixRain />
           <div className="relative z-10">
             <Navbar />
-            <main className="max-w-4xl mx-auto px-4 py-8">
+            <main className="max-w-4xl mx-auto px-3 md:px-4 py-6 md:py-8">
               {children}
             </main>
           </div>

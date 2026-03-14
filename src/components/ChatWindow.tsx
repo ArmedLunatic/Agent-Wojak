@@ -52,7 +52,7 @@ export function ChatWindow() {
   return (
     <div className="border border-green-900 rounded-lg overflow-hidden">
       {/* Chat messages */}
-      <div className="h-96 overflow-y-auto p-4 space-y-4">
+      <div className="h-72 md:h-96 overflow-y-auto p-3 md:p-4 space-y-3 md:space-y-4">
         {messages.length === 0 && (
           <div className="text-green-700 text-center mt-16">
             <p className="text-2xl glow mb-2">{"\u27E9"} AGENT WOJAK ONLINE</p>
@@ -101,14 +101,14 @@ export function ChatWindow() {
       </div>
 
       {/* Input */}
-      <div className="border-t border-green-900 p-4 flex gap-2">
+      <div className="border-t border-green-900 p-3 md:p-4 flex gap-2">
         <input
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && handleSend()}
           placeholder="say something to wojak..."
-          className="flex-1 bg-black border border-green-900 rounded px-4 py-2 text-green-400 placeholder-green-800 focus:outline-none focus:border-green-500"
+          className="flex-1 min-w-0 bg-black border border-green-900 rounded px-3 md:px-4 py-2 text-green-400 placeholder-green-800 focus:outline-none focus:border-green-500 text-sm md:text-base"
         />
         <motion.button
           onClick={handleSend}
@@ -116,7 +116,7 @@ export function ChatWindow() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           transition={{ type: "spring", stiffness: 400, damping: 20 }}
-          className="bg-green-900/50 border border-green-700 px-6 py-2 rounded text-green-400 hover:bg-green-800/50 transition-colors disabled:opacity-50"
+          className="bg-green-900/50 border border-green-700 px-4 md:px-6 py-2 rounded text-green-400 hover:bg-green-800/50 transition-colors disabled:opacity-50 text-sm md:text-base shrink-0"
         >
           [SEND]
         </motion.button>

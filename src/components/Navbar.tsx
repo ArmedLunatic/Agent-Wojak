@@ -1,8 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const NAV_LINKS = [
   { href: "/", label: "[CHAT]" },
@@ -14,20 +15,23 @@ const NAV_LINKS = [
 
 export function Navbar() {
   const pathname = usePathname();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="border-b border-green-900 py-4 px-6">
+    <nav className="border-b border-green-900 py-4 px-4 md:px-6">
       <div className="max-w-4xl mx-auto flex items-center justify-between">
-        <Link href="/">
+        <Link href="/" onClick={() => setMenuOpen(false)}>
           <motion.span
-            className="text-xl font-bold glow glitch inline-block"
+            className="text-lg md:text-xl font-bold glow glitch inline-block"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
           >
             AGENT WOJAK
           </motion.span>
         </Link>
-        <div className="flex gap-6 text-sm">
+
+        {/* Desktop nav */}
+        <div className="hidden md:flex gap-6 text-sm">
           {NAV_LINKS.map((link) => (
             <Link key={link.href} href={link.href} className="relative">
               <motion.span
@@ -48,7 +52,46 @@ export function Navbar() {
             </Link>
           ))}
         </div>
+
+        {/* Mobile hamburger */}
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="md:hidden text-green-400 hover:text-white transition-colors text-sm border border-green-900 px-2 py-1 rounded"
+          aria-label="Toggle menu"
+        >
+          {menuOpen ? "[X]" : "[=]"}
+        </button>
       </div>
+
+      {/* Mobile menu dropdown */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2 }}
+            className="md:hidden overflow-hidden"
+          >
+            <div className="flex flex-col gap-1 pt-4 pb-2 max-w-4xl mx-auto">
+              {NAV_LINKS.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMenuOpen(false)}
+                  className={`block px-3 py-2 rounded text-sm transition-colors ${
+                    pathname === link.href
+                      ? "bg-green-900/30 text-white border-l-2 border-green-500"
+                      : "text-green-400 hover:bg-green-900/20 hover:text-white"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

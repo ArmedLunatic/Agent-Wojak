@@ -6,13 +6,6 @@ import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import { Transaction } from "@solana/web3.js";
 import { motion, AnimatePresence } from "framer-motion";
 
-type Invoice = {
-  amount: number;
-  memo: number;
-  startTime: number;
-  endTime: number;
-};
-
 export function RandomGenerator() {
   const { publicKey, signTransaction } = useWallet();
   const { connection } = useConnection();
@@ -35,12 +28,11 @@ export function RandomGenerator() {
       });
 
       if (!createRes.ok) {
-        const data = await createRes.json();
-        throw new Error(data.error || "Failed to create payment");
+        const data = await createRes.json().catch(() => null);
+        throw new Error(data?.error || "Failed to create payment");
       }
 
-      const { transaction: txBase64, invoice }: { transaction: string; invoice: Invoice } =
-        await createRes.json();
+      const { transaction: txBase64, invoiceId } = await createRes.json();
 
       // Step 2: Sign transaction with wallet
       const tx = Transaction.from(Buffer.from(txBase64, "base64"));
@@ -66,20 +58,20 @@ export function RandomGenerator() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           userWallet: publicKey.toBase58(),
-          invoice,
+          invoiceId,
         }),
       });
 
       if (!verifyRes.ok) {
-        const data = await verifyRes.json();
-        throw new Error(data.error || "Verification failed");
+        const data = await verifyRes.json().catch(() => null);
+        throw new Error(data?.error || "Verification failed");
       }
 
       const { randomNumber: num } = await verifyRes.json();
       setRandomNumber(num);
       setStep("result");
     } catch (err) {
-      const msg = err instanceof Error ? err.message : "something went wrong";
+      const msg = err instanceof Error ? err.message : "something went wrong ser";
       if (msg.includes("User rejected")) {
         setError("transaction cancelled ser. no worries.");
       } else {
@@ -185,7 +177,7 @@ export function RandomGenerator() {
             <div className="border border-green-500 rounded-lg p-8" style={{ boxShadow: "0 0 30px rgba(0,255,65,0.3)" }}>
               <p className="text-xs text-green-700 mb-2">{"\u27E9"} YOUR NUMBER</p>
               <motion.div
-                className="text-7xl font-bold glow"
+                className="text-5xl md:text-7xl font-bold glow"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
@@ -235,7 +227,7 @@ export function RandomGenerator() {
           <li>receive your random number (0-1000)</li>
         </ol>
         <p className="mt-2 text-green-900">
-          revenue feeds $WOJAK automated buybacks + burn
+          revenue feeds $AgentJak automated buybacks + burn
         </p>
       </div>
     </div>

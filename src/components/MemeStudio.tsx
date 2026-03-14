@@ -46,12 +46,12 @@ async function renderMemeOnCanvas(
     ctx.fillText(bottomText, WIDTH / 2, HEIGHT - 30);
   }
 
-  // $WOJAK watermark
+  // $AgentJak watermark
   ctx.font = "12px monospace";
   ctx.fillStyle = "#00FF4180";
   ctx.strokeStyle = "transparent";
   ctx.textAlign = "right";
-  ctx.fillText("$WOJAK", WIDTH - 10, HEIGHT - 10);
+  ctx.fillText("$AgentJak", WIDTH - 10, HEIGHT - 10);
 
   return canvas.toDataURL("image/png");
 }
@@ -106,14 +106,14 @@ export function MemeStudio() {
         <label className="text-xs text-green-700 block mb-2">
           {"\u27E9"} DESCRIBE YOUR MEME SCENARIO
         </label>
-        <div className="flex gap-2">
+        <div className="flex flex-col sm:flex-row gap-2">
           <input
             type="text"
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && handleGenerate()}
             placeholder="me after aping into a coin with no audit..."
-            className="flex-1 bg-black border border-green-900 rounded px-4 py-2 text-green-400 placeholder-green-800 focus:outline-none focus:border-green-500"
+            className="flex-1 min-w-0 bg-black border border-green-900 rounded px-3 md:px-4 py-2 text-green-400 placeholder-green-800 focus:outline-none focus:border-green-500 text-sm md:text-base"
           />
           <motion.button
             onClick={handleGenerate}
@@ -121,7 +121,7 @@ export function MemeStudio() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 20 }}
-            className="bg-green-900/50 border border-green-700 px-6 py-2 rounded text-green-400 hover:bg-green-800/50 transition-colors disabled:opacity-50"
+            className="bg-green-900/50 border border-green-700 px-6 py-2 rounded text-green-400 hover:bg-green-800/50 transition-colors disabled:opacity-50 text-sm md:text-base shrink-0"
           >
             {loading ? "[GENERATING...]" : "[GENERATE]"}
           </motion.button>

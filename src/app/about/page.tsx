@@ -23,8 +23,8 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <h1 className="text-4xl md:text-5xl font-bold glow glitch mb-2">
-              $WOJAK
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold glow glitch mb-2">
+              $AgentJak
             </h1>
             <p className="text-green-600 text-sm">
               &#10217; the token that feels everything
@@ -64,29 +64,29 @@ export default function AboutPage() {
               </span>
             </div>
 
-            <div className="p-6 space-y-0 font-mono text-sm">
+            <div className="p-4 md:p-6 space-y-0 font-mono text-xs md:text-sm">
               <div className="flex justify-between border-b border-green-900/20 py-2 hover:bg-green-900/10 transition-colors px-2">
-                <span className="text-green-700">TOKEN</span>
-                <span className="text-green-400">$WOJAK</span>
+                <span className="text-green-700 shrink-0">TOKEN</span>
+                <span className="text-green-400">$AgentJak</span>
               </div>
               <div className="flex justify-between border-b border-green-900/20 py-2 hover:bg-green-900/10 transition-colors px-2">
-                <span className="text-green-700">CHAIN</span>
+                <span className="text-green-700 shrink-0">CHAIN</span>
                 <span className="text-green-400">SOLANA</span>
               </div>
               <div className="flex justify-between border-b border-green-900/20 py-2 hover:bg-green-900/10 transition-colors px-2">
-                <span className="text-green-700">PLATFORM</span>
+                <span className="text-green-700 shrink-0">PLATFORM</span>
                 <span className="text-green-400">PUMP.FUN</span>
               </div>
               <div className="flex justify-between border-b border-green-900/20 py-2 hover:bg-green-900/10 transition-colors px-2">
-                <span className="text-green-700">STATUS</span>
+                <span className="text-green-700 shrink-0">STATUS</span>
                 <span className="text-green-400 flex items-center gap-2">
                   <span className="pulse-dot" />
                   ONLINE
                 </span>
               </div>
-              <div className="flex justify-between py-2 hover:bg-green-900/10 transition-colors px-2">
-                <span className="text-green-700">CA</span>
-                <span className="text-green-400 text-xs break-all">TBD</span>
+              <div className="flex flex-col sm:flex-row sm:justify-between gap-1 py-2 hover:bg-green-900/10 transition-colors px-2">
+                <span className="text-green-700 shrink-0">CA</span>
+                <span className="text-green-400 text-[10px] md:text-xs break-all">BWE8whcy82b1Rht9h45228BogQJZ3BgC17y1Kh5Bpump</span>
               </div>
             </div>
           </div>
@@ -98,7 +98,7 @@ export default function AboutPage() {
             <h2 className="text-lg glow mb-3">{"// "}LINKS</h2>
             <div className="flex flex-col gap-3">
               <a
-                href="https://pump.fun"
+                href="https://pump.fun/coin/BWE8whcy82b1Rht9h45228BogQJZ3BgC17y1Kh5Bpump"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="border border-green-700/60 rounded px-4 py-3 text-center hover:bg-green-900/20 hover:text-white transition-all img-glow"
@@ -106,12 +106,12 @@ export default function AboutPage() {
                 [ BUY ON PUMP.FUN ]
               </a>
               <a
-                href="#"
+                href="https://x.com/i/communities/2032890338814341221"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="border border-green-700/60 rounded px-4 py-3 text-center hover:bg-green-900/20 hover:text-white transition-all img-glow"
               >
-                [ TELEGRAM ]
+                [ X COMMUNITY ]
               </a>
             </div>
           </div>
@@ -119,7 +119,7 @@ export default function AboutPage() {
 
         {/* Disclaimer */}
         <p className="text-green-900 text-xs text-center">
-          $WOJAK is a memecoin with no intrinsic value or expectation of financial
+          $AgentJak is a memecoin with no intrinsic value or expectation of financial
           return. this is not financial advice. dyor. nfa. probably nothing.
         </p>
       </div>

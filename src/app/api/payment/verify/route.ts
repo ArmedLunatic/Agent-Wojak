@@ -1,13 +1,31 @@
 import { NextRequest, NextResponse } from "next/server";
 import { PumpAgent } from "@pump-fun/agent-payments-sdk";
 import { PublicKey, Connection } from "@solana/web3.js";
+import crypto from "crypto";
+import { invoiceStore } from "@/lib/invoice-store";
 
 export async function POST(req: NextRequest) {
   try {
-    const { userWallet, invoice } = await req.json();
+    const { userWallet, invoiceId } = await req.json();
 
-    if (!userWallet || !invoice) {
-      return NextResponse.json({ error: "wallet and invoice required" }, { status: 400 });
+    if (!userWallet || !invoiceId) {
+      return NextResponse.json({ error: "wallet and invoiceId required" }, { status: 400 });
+    }
+
+    // Look up invoice server-side (prevents tampering)
+    const invoice = invoiceStore.get(invoiceId);
+    if (!invoice) {
+      return NextResponse.json({ error: "invoice not found or expired" }, { status: 404 });
+    }
+
+    // Prevent replay attacks
+    if (invoice.consumed) {
+      return NextResponse.json({ error: "invoice already used" }, { status: 409 });
+    }
+
+    // Verify wallet matches
+    if (invoice.userWallet !== userWallet) {
+      return NextResponse.json({ error: "wallet mismatch" }, { status: 403 });
     }
 
     const connection = new Connection(process.env.SOLANA_RPC_URL!);
@@ -34,8 +52,12 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "payment not verified" }, { status: 402 });
     }
 
-    // Payment verified — generate random number
-    const randomNumber = Math.floor(Math.random() * 1001);
+    // Mark invoice as consumed (prevents replay)
+    invoice.consumed = true;
+    invoiceStore.set(invoiceId, invoice);
+
+    // Cryptographically secure random number
+    const randomNumber = crypto.randomInt(0, 1001);
 
     return NextResponse.json({ verified: true, randomNumber });
   } catch (error: unknown) {

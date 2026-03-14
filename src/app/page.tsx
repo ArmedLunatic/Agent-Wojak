@@ -41,7 +41,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="inline-block border border-green-700/60 rounded px-6 py-3 text-green-400 hover:text-white hover:bg-green-900/30 text-sm transition-all border-glow"
             >
-              [ BUY $WOJAK ON PUMP.FUN ]
+              [ BUY $AgentJak ON PUMP.FUN ]
             </a>
           </div>
         </ScrollReveal>

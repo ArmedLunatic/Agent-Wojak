@@ -2,7 +2,7 @@
 
 export function Ticker() {
   const items = [
-    "$WOJAK",
+    "$AgentJak",
     "SOLANA",
     "NGMI",
     "WAGMI",

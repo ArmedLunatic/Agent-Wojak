@@ -18,8 +18,8 @@ export async function POST(req: NextRequest) {
   try {
     const { prompt } = await req.json();
 
-    if (!prompt || typeof prompt !== "string") {
-      return NextResponse.json({ error: "prompt required" }, { status: 400 });
+    if (!prompt || typeof prompt !== "string" || prompt.length > 500) {
+      return NextResponse.json({ error: "prompt required (max 500 chars)" }, { status: 400 });
     }
 
     const { mood, caption } = await classifyMoodAndCaption(prompt);

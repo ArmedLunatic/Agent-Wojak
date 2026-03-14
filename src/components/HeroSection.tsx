@@ -81,7 +81,7 @@ export function HeroSection() {
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ type: "spring", stiffness: 200, damping: 20, delay: 0.2 }}
-        className="text-5xl md:text-7xl font-bold glow glitch mb-4 tracking-wider"
+        className="text-3xl sm:text-5xl md:text-7xl font-bold glow glitch mb-4 tracking-wider"
       >
         AGENT WOJAK
       </motion.h1>
@@ -93,7 +93,7 @@ export function HeroSection() {
         transition={{ delay: 0.4, duration: 0.5 }}
         className="text-green-500 text-sm md:text-base mb-6"
       >
-        the most dramatic degen AI on solana {"// "}$WOJAK
+        the most dramatic degen AI on solana {"// "}$AgentJak
       </motion.p>
 
       {/* Typing tagline */}
@@ -105,7 +105,7 @@ export function HeroSection() {
       </div>
 
       {/* Status bar */}
-      <div className="mt-6 flex items-center justify-center gap-2 text-xs text-green-700">
+      <div className="mt-6 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-[10px] md:text-xs text-green-700">
         <span className="pulse-dot" />
         <span>STATUS: ONLINE</span>
         <span className="text-green-900">{"///"}</span>

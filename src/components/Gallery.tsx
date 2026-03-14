@@ -125,13 +125,13 @@ export function Gallery() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.8 }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
-              className="relative max-w-3xl max-h-[85vh] mx-4"
+              className="relative max-w-3xl max-h-[85vh] mx-3 md:mx-4 w-full"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close button */}
               <button
                 onClick={closeModal}
-                className="absolute -top-10 right-0 text-green-400 hover:text-white text-sm transition-colors z-10"
+                className="absolute -top-8 md:-top-10 right-0 text-green-400 hover:text-white text-sm transition-colors z-10"
               >
                 [X] CLOSE
               </button>
