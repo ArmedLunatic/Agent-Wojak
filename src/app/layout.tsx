@@ -3,6 +3,7 @@ import { Share_Tech_Mono } from "next/font/google";
 import "./globals.css";
 import { MatrixRain } from "@/components/MatrixRain";
 import { Navbar } from "@/components/Navbar";
+import { BootSequence } from "@/components/BootSequence";
 
 const shareTechMono = Share_Tech_Mono({
   weight: "400",
@@ -28,6 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={shareTechMono.variable}>
       <body className="bg-black text-green-400 font-mono min-h-screen relative overflow-x-hidden">
+        <BootSequence />
         <MatrixRain />
         <div className="relative z-10">
           <Navbar />

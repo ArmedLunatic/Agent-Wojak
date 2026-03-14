@@ -134,3 +134,10 @@ body::after {
 .border-glow {
   box-shadow: 0 0 10px #00FF4130, inset 0 0 10px #00FF4110;
 }
+
+/* CRT flicker for boot sequence */
+@keyframes crt-flicker {
+  0% { opacity: 0.97; }
+  50% { opacity: 1; }
+  100% { opacity: 0.98; }
+}
