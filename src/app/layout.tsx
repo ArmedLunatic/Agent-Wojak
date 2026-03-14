@@ -4,6 +4,7 @@ import "./globals.css";
 import { MatrixRain } from "@/components/MatrixRain";
 import { Navbar } from "@/components/Navbar";
 import { BootSequence } from "@/components/BootSequence";
+import { WalletProvider } from "@/components/WalletProvider";
 
 const shareTechMono = Share_Tech_Mono({
   weight: "400",
@@ -29,14 +30,16 @@ export default function RootLayout({
   return (
     <html lang="en" className={shareTechMono.variable}>
       <body className="bg-black text-green-400 font-mono min-h-screen relative overflow-x-hidden">
-        <BootSequence />
-        <MatrixRain />
-        <div className="relative z-10">
-          <Navbar />
-          <main className="max-w-4xl mx-auto px-4 py-8">
-            {children}
-          </main>
-        </div>
+        <WalletProvider>
+          <BootSequence />
+          <MatrixRain />
+          <div className="relative z-10">
+            <Navbar />
+            <main className="max-w-4xl mx-auto px-4 py-8">
+              {children}
+            </main>
+          </div>
+        </WalletProvider>
       </body>
     </html>
   );

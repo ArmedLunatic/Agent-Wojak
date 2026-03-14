@@ -8,6 +8,7 @@ const NAV_LINKS = [
   { href: "/", label: "[CHAT]" },
   { href: "/meme", label: "[MEME LAB]" },
   { href: "/gallery", label: "[GALLERY]" },
+  { href: "/random", label: "[RNG]" },
   { href: "/about", label: "[TOKEN]" },
 ];
 
