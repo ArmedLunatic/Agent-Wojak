@@ -3,11 +3,11 @@ import path from "path";
 import { MoodType } from "./llm";
 
 const TEMPLATE_MAP: Record<MoodType, string[]> = {
-  cope: ["bloomer.png", "cozy.png"],
-  hype: ["chad.png", "pointing.png"],
-  doom: ["doomer.png", "crying.png"],
-  panic: ["pink.png"],
-  smug: ["smug.png", "brain.png", "npc.png"],
+  cope: ["cope.jpg", "default.jpg"],
+  hype: ["hype.jpg", "rich.jpg", "chad.jpg"],
+  doom: ["doom.jpg", "default.jpg"],
+  panic: ["doom.jpg", "cope.jpg"],
+  smug: ["smug.jpg", "chad.jpg", "default.jpg"],
 };
 
 function pickTemplate(mood: MoodType): string {
@@ -19,19 +19,28 @@ export async function generateMeme(
   mood: MoodType,
   caption: string
 ): Promise<Buffer> {
-  const WIDTH = 600;
-  const HEIGHT = 600;
-  const canvas = createCanvas(WIDTH, HEIGHT);
-  const ctx = canvas.getContext("2d");
-
-  // Try to load template image
   const templateFile = pickTemplate(mood);
   const templatePath = path.join(process.cwd(), "public", "templates", templateFile);
 
+  let WIDTH = 600;
+  let HEIGHT = 600;
+
+  // Try to load template image and use its natural dimensions
+  let img;
   try {
-    const img = await loadImage(templatePath);
-    ctx.drawImage(img, 0, 0, WIDTH, HEIGHT);
+    img = await loadImage(templatePath);
+    WIDTH = img.width > 800 ? 800 : img.width;
+    HEIGHT = Math.round((WIDTH / img.width) * img.height);
   } catch {
+    img = null;
+  }
+
+  const canvas = createCanvas(WIDTH, HEIGHT);
+  const ctx = canvas.getContext("2d");
+
+  if (img) {
+    ctx.drawImage(img, 0, 0, WIDTH, HEIGHT);
+  } else {
     // Fallback: solid dark background if template not found
     ctx.fillStyle = "#111111";
     ctx.fillRect(0, 0, WIDTH, HEIGHT);
