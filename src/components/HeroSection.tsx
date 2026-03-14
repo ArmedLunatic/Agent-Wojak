@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 const TAGLINES = [
   "i feel the blockchain...",
@@ -48,8 +49,12 @@ export function HeroSection() {
 
   return (
     <div className="text-center py-8 md:py-12 fade-in-up">
-      {/* Hero Image */}
-      <div className="relative inline-block mb-8">
+      {/* Hero Image with floating bob */}
+      <motion.div
+        className="relative inline-block mb-8"
+        animate={{ y: [0, -10, 0] }}
+        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+      >
         {/* Glow ring behind image */}
         <div className="absolute inset-0 rounded-full bg-green-500/10 blur-xl scale-125" />
 
@@ -69,17 +74,27 @@ export function HeroSection() {
         <div className="absolute -top-2 -right-2 w-4 h-4 border-t-2 border-r-2 border-green-500/60" />
         <div className="absolute -bottom-2 -left-2 w-4 h-4 border-b-2 border-l-2 border-green-500/60" />
         <div className="absolute -bottom-2 -right-2 w-4 h-4 border-b-2 border-r-2 border-green-500/60" />
-      </div>
+      </motion.div>
 
-      {/* Title */}
-      <h1 className="text-5xl md:text-7xl font-bold glow glitch mb-4 tracking-wider">
+      {/* Title with scale animation on load */}
+      <motion.h1
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ type: "spring", stiffness: 200, damping: 20, delay: 0.2 }}
+        className="text-5xl md:text-7xl font-bold glow glitch mb-4 tracking-wider"
+      >
         AGENT WOJAK
-      </h1>
+      </motion.h1>
 
       {/* Subtitle */}
-      <p className="text-green-500 text-sm md:text-base mb-6">
+      <motion.p
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4, duration: 0.5 }}
+        className="text-green-500 text-sm md:text-base mb-6"
+      >
         the most dramatic degen AI on solana {"// "}$WOJAK
-      </p>
+      </motion.p>
 
       {/* Typing tagline */}
       <div className="inline-block border border-green-900/60 rounded px-6 py-3 bg-black/50 border-glow">

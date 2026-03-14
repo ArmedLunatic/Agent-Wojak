@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --matrix-green: #00FF41;
   --matrix-dark-green: #003B00;
