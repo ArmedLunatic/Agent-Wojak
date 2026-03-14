@@ -1,7 +1,60 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+
+async function renderMemeOnCanvas(
+  templateUrl: string,
+  caption: string
+): Promise<string> {
+  const img = new Image();
+  img.crossOrigin = "anonymous";
+  await new Promise<void>((resolve, reject) => {
+    img.onload = () => resolve();
+    img.onerror = reject;
+    img.src = templateUrl;
+  });
+
+  const WIDTH = img.width > 800 ? 800 : img.width;
+  const HEIGHT = Math.round((WIDTH / img.width) * img.height);
+
+  const canvas = document.createElement("canvas");
+  canvas.width = WIDTH;
+  canvas.height = HEIGHT;
+  const ctx = canvas.getContext("2d")!;
+
+  ctx.drawImage(img, 0, 0, WIDTH, HEIGHT);
+
+  const parts = caption.split("|");
+  const topText = parts[0]?.trim().toUpperCase() || "";
+  const bottomText = parts[1]?.trim().toUpperCase() || "";
+
+  ctx.textAlign = "center";
+  ctx.lineWidth = 3;
+  ctx.strokeStyle = "black";
+  ctx.fillStyle = "white";
+
+  if (topText) {
+    ctx.font = "bold 32px monospace";
+    ctx.strokeText(topText, WIDTH / 2, 50);
+    ctx.fillText(topText, WIDTH / 2, 50);
+  }
+
+  if (bottomText) {
+    ctx.font = "bold 32px monospace";
+    ctx.strokeText(bottomText, WIDTH / 2, HEIGHT - 30);
+    ctx.fillText(bottomText, WIDTH / 2, HEIGHT - 30);
+  }
+
+  // $WOJAK watermark
+  ctx.font = "12px monospace";
+  ctx.fillStyle = "#00FF4180";
+  ctx.strokeStyle = "transparent";
+  ctx.textAlign = "right";
+  ctx.fillText("$WOJAK", WIDTH - 10, HEIGHT - 10);
+
+  return canvas.toDataURL("image/png");
+}
 
 export function MemeStudio() {
   const [prompt, setPrompt] = useState("");
@@ -9,7 +62,7 @@ export function MemeStudio() {
   const [memeUrl, setMemeUrl] = useState<string | null>(null);
   const [gallery, setGallery] = useState<string[]>([]);
 
-  async function handleGenerate() {
+  const handleGenerate = useCallback(async () => {
     if (!prompt.trim() || loading) return;
     setLoading(true);
     setMemeUrl(null);
@@ -21,18 +74,22 @@ export function MemeStudio() {
         body: JSON.stringify({ prompt: prompt.trim() }),
       });
 
-      if (!res.ok) throw new Error("Generation failed");
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        throw new Error(data?.error || "Generation failed");
+      }
 
-      const blob = await res.blob();
-      const url = URL.createObjectURL(blob);
-      setMemeUrl(url);
-      setGallery((prev) => [url, ...prev].slice(0, 6));
-    } catch {
-      alert("meme machine broke ser. try again.");
+      const { caption, template } = await res.json();
+      const dataUrl = await renderMemeOnCanvas(template, caption);
+      setMemeUrl(dataUrl);
+      setGallery((prev) => [dataUrl, ...prev].slice(0, 6));
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : "meme machine broke ser.";
+      alert(msg);
     } finally {
       setLoading(false);
     }
-  }
+  }, [prompt, loading]);
 
   function handleDownload() {
     if (!memeUrl) return;

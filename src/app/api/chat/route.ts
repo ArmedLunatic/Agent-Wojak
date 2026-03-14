@@ -11,11 +11,13 @@ export async function POST(req: NextRequest) {
 
     const reply = await chatWithWojak(messages);
     return NextResponse.json({ reply });
-  } catch (error) {
-    console.error("Chat error:", error);
+  } catch (error: unknown) {
+    const msg = error instanceof Error ? error.message : String(error);
+    console.error("Chat error:", msg);
+    const isRateLimit = msg.includes("429") || msg.includes("rate limit");
     return NextResponse.json(
-      { error: "ser... something broke. it's so over." },
-      { status: 500 }
+      { error: isRateLimit ? "ser... the ai brain is overloaded. try again in a minute." : "ser... something broke. it's so over." },
+      { status: isRateLimit ? 429 : 500 }
     );
   }
 }
