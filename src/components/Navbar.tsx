@@ -14,6 +14,9 @@ export function Navbar() {
           <Link href="/meme" className="hover:text-white transition-colors">
             [MEME LAB]
           </Link>
+          <Link href="/gallery" className="hover:text-white transition-colors">
+            [GALLERY]
+          </Link>
           <Link href="/about" className="hover:text-white transition-colors">
             [TOKEN]
           </Link>

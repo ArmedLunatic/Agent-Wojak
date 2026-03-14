@@ -59,3 +59,78 @@ body::after {
   background: #00FF41;
   border-radius: 3px;
 }
+
+/* Fade in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+/* Staggered delays */
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
+
+/* Marquee/ticker */
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker {
+  animation: ticker 20s linear infinite;
+}
+
+/* Image glow on hover */
+.img-glow {
+  transition: all 0.3s ease;
+}
+
+.img-glow:hover {
+  box-shadow: 0 0 15px #00FF41, 0 0 30px #00FF4140;
+  border-color: #00FF41 !important;
+}
+
+/* Typing cursor */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor-blink::after {
+  content: "\2588";
+  animation: blink 1s step-end infinite;
+}
+
+/* Pulse dot */
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; box-shadow: 0 0 5px #00FF41; }
+  50% { opacity: 0.5; box-shadow: 0 0 15px #00FF41; }
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #00FF41;
+  display: inline-block;
+  animation: pulseDot 2s ease-in-out infinite;
+}
+
+/* Green border glow */
+.border-glow {
+  box-shadow: 0 0 10px #00FF4130, inset 0 0 10px #00FF4110;
+}

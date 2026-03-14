@@ -1,29 +1,39 @@
 import { ChatWindow } from "@/components/ChatWindow";
+import { HeroSection } from "@/components/HeroSection";
+import { Ticker } from "@/components/Ticker";
 
 export default function Home() {
   return (
     <div>
-      {/* Hero */}
-      <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold glow glitch mb-2">AGENT WOJAK</h1>
-        <p className="text-green-600 text-sm">
-          the most dramatic degen AI on solana // $WOJAK
-        </p>
-        <div className="mt-4 inline-block border border-green-900 rounded px-4 py-2 text-xs text-green-700">
-          ⟩ STATUS: ONLINE // MOOD: VOLATILE // CHAIN: SOLANA
-        </div>
+      {/* Scrolling Ticker */}
+      <div className="-mx-4 -mt-8 mb-8">
+        <Ticker />
       </div>
 
-      {/* Chat */}
+      {/* Hero */}
+      <HeroSection />
+
+      {/* Divider */}
+      <div className="my-8 h-px bg-gradient-to-r from-transparent via-green-500/40 to-transparent" />
+
+      {/* Chat Section */}
+      <div className="mb-4">
+        <h2 className="text-lg glow mb-1 text-center">
+          {"// "}TERMINAL
+        </h2>
+        <p className="text-green-700 text-xs text-center mb-4">
+          talk to wojak. he has feelings.
+        </p>
+      </div>
       <ChatWindow />
 
       {/* Buy link */}
-      <div className="text-center mt-6">
+      <div className="text-center mt-8 mb-4">
         <a
           href="https://pump.fun"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-green-600 hover:text-green-400 text-sm transition-colors"
+          className="inline-block border border-green-700/60 rounded px-6 py-3 text-green-400 hover:text-white hover:bg-green-900/30 text-sm transition-all border-glow"
         >
           [ BUY $WOJAK ON PUMP.FUN ]
         </a>
