@@ -191,12 +191,17 @@ export function WojakSlots() {
 
   return (
     <GameShell title="WOJAK SLOTS" result={result} commentary={commentary}>
+      {/* Frame header */}
+      <div className="font-mono text-sm text-cyan-primary tracking-wider mb-3">
+        SIMULATION://SLOT_MACHINE
+      </div>
+
       {/* Terminal window frame */}
-      <div className="border border-green-900 rounded-lg overflow-hidden">
+      <div className="border border-cyan-primary/20 rounded-lg overflow-hidden">
         {/* Title bar */}
-        <div className="bg-green-900/20 border-b border-green-900 px-3 py-2 flex items-center gap-2">
-          <span className="text-green-700 text-xs">● ● ●</span>
-          <span className="text-green-700 text-xs">wojak@slots:~$</span>
+        <div className="bg-bg-surface border-b border-cyan-primary/20 px-3 py-2 flex items-center gap-2">
+          <span className="text-cyan-primary/40 text-xs">● ● ●</span>
+          <span className="text-cyan-primary/40 text-xs">wojak@slots:~$</span>
         </div>
 
         {/* Slot machine area */}
@@ -204,12 +209,12 @@ export function WojakSlots() {
           {/* Reels container */}
           <div className="relative flex justify-center gap-3 md:gap-4">
             {/* Pay line indicator */}
-            <div className="absolute top-1/2 left-0 right-0 -translate-y-1/2 border-t border-dashed border-green-500/60 z-10 pointer-events-none" />
+            <div className="absolute top-1/2 left-0 right-0 -translate-y-1/2 border-t border-dashed border-cyan-primary/40 z-10 pointer-events-none" />
 
             {[0, 1, 2].map((reelIndex) => (
               <div
                 key={reelIndex}
-                className="border border-green-900 rounded bg-black/50 overflow-hidden"
+                className="bg-bg-surface border border-cyan-primary/10 rounded overflow-hidden"
                 style={{
                   width: 90,
                   height: SYMBOL_HEIGHT,
@@ -258,11 +263,14 @@ export function WojakSlots() {
               className="text-center mt-4"
             >
               {lastPayout > 0 ? (
-                <span className="text-green-400 glow text-lg font-bold">
+                <span
+                  className="text-cyan-primary text-lg font-bold"
+                  style={{ textShadow: "0 0 10px rgba(0,212,255,0.3)" }}
+                >
                   +{lastPayout} $WOJAK
                 </span>
               ) : (
-                <span className="text-red-500 text-lg">-{betAmount} $WOJAK</span>
+                <span className="text-danger-red text-lg">-{betAmount} $WOJAK</span>
               )}
             </motion.div>
           )}
@@ -273,18 +281,14 @@ export function WojakSlots() {
       <div className="mt-4 space-y-3">
         {/* Bet presets */}
         <div className="flex items-center justify-center gap-2">
-          <span className="text-green-700 text-xs mr-2">BET:</span>
+          <span className="text-cyan-primary/40 text-xs mr-2 font-mono">BET:</span>
           {BET_PRESETS.map((preset) => (
             <motion.button
               key={preset}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => !isSpinning && setBetAmount(preset)}
-              className={`px-4 py-2 rounded text-sm border transition-colors ${
-                betAmount === preset
-                  ? "bg-green-800/50 border-green-500 text-green-300 glow"
-                  : "bg-green-900/50 border-green-700 text-green-400 hover:bg-green-800/50"
-              }`}
+              className={`hud-btn hud-btn-primary${betAmount === preset ? " hud-glow" : ""}`}
               disabled={isSpinning}
             >
               [{preset}]
@@ -292,7 +296,7 @@ export function WojakSlots() {
           ))}
         </div>
 
-        {/* Pull lever button */}
+        {/* Spin button */}
         <div className="flex justify-center">
           <motion.button
             whileHover={
@@ -303,18 +307,16 @@ export function WojakSlots() {
             }
             onClick={spin}
             disabled={isSpinning || balance < betAmount}
-            className={`px-8 py-3 rounded border text-sm font-bold transition-colors ${
-              isSpinning || balance < betAmount
-                ? "bg-green-900/20 border-green-900 text-green-800 cursor-not-allowed"
-                : "bg-green-900/50 border-green-700 text-green-400 hover:bg-green-800/50 border-glow"
+            className={`hud-btn hud-btn-primary px-8 py-3 ${
+              isSpinning || balance < betAmount ? "opacity-40 cursor-not-allowed" : ""
             }`}
           >
-            {isSpinning ? "[ SPINNING... ]" : "[ PULL LEVER ]"}
+            {isSpinning ? "[ SPINNING... ]" : "EXECUTE SPIN"}
           </motion.button>
         </div>
 
         {balance < betAmount && !isSpinning && (
-          <p className="text-red-500/70 text-xs text-center">
+          <p className="text-danger-red/70 text-xs text-center">
             insufficient funds ser... lower your bet or reset balance
           </p>
         )}

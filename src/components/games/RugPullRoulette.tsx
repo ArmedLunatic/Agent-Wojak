@@ -7,14 +7,14 @@ import { useGameBalance } from "./useGameBalance";
 import { pickRandom } from "./utils";
 
 const SEGMENTS = [
-  { label: "2x MOON", multiplier: 2, color: "#00FF41" },
+  { label: "2x MOON", multiplier: 2, color: "#00d4ff" },
   { label: "RUGGED!", multiplier: 0, color: "#661111" },
-  { label: "3x PUMP", multiplier: 3, color: "#00CC33" },
-  { label: "RUG PULL", multiplier: 0, color: "#441111" },
-  { label: "DIAMOND 5x", multiplier: 5, color: "#00FF90" },
-  { label: "LIQUIDATED", multiplier: 0, color: "#331111" },
-  { label: "1.5x", multiplier: 1.5, color: "#009922" },
-  { label: "COPE 0.5x", multiplier: 0.5, color: "#006611" },
+  { label: "3x PUMP", multiplier: 3, color: "#0a8fb0" },
+  { label: "RUG PULL", multiplier: 0, color: "#992222" },
+  { label: "DIAMOND 5x", multiplier: 5, color: "#00b8d4" },
+  { label: "LIQUIDATED", multiplier: 0, color: "#ff4444" },
+  { label: "1.5x", multiplier: 1.5, color: "#006080" },
+  { label: "COPE 0.5x", multiplier: 0.5, color: "#ff6b35" },
 ];
 
 const BET_PRESETS = [10, 50, 100];
@@ -68,6 +68,10 @@ function drawWheel(canvas: HTMLCanvasElement, displaySize: number) {
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+  // Background
+  ctx.fillStyle = "#0c1220";
+  ctx.fillRect(0, 0, size, size);
+
   for (let i = 0; i < SEGMENT_COUNT; i++) {
     const startAngle = i * ARC - Math.PI / 2;
     const endAngle = startAngle + ARC;
@@ -80,7 +84,7 @@ function drawWheel(canvas: HTMLCanvasElement, displaySize: number) {
     ctx.closePath();
     ctx.fillStyle = seg.color;
     ctx.fill();
-    ctx.strokeStyle = "#00FF4130";
+    ctx.strokeStyle = "#00d4ff30";
     ctx.lineWidth = 2;
     ctx.stroke();
 
@@ -100,9 +104,9 @@ function drawWheel(canvas: HTMLCanvasElement, displaySize: number) {
   // Center circle
   ctx.beginPath();
   ctx.arc(cx, cy, radius * 0.12, 0, 2 * Math.PI);
-  ctx.fillStyle = "#000000";
+  ctx.fillStyle = "#0c1220";
   ctx.fill();
-  ctx.strokeStyle = "#00FF41";
+  ctx.strokeStyle = "#00d4ff";
   ctx.lineWidth = 2;
   ctx.stroke();
 }
@@ -222,19 +226,24 @@ export function RugPullRoulette() {
 
   return (
     <GameShell title="RUG PULL ROULETTE" result={result} commentary={commentary}>
+      {/* Frame header */}
+      <div className="font-mono text-sm text-cyan-primary tracking-wider mb-3">
+        SIMULATION://RUG_ROULETTE
+      </div>
+
       <div
         className={`border rounded-lg overflow-hidden transition-colors duration-300 ${
           rugFlash
             ? "border-red-500 shadow-[0_0_20px_rgba(255,0,0,0.4)]"
             : bigWinGlow
-            ? "border-green-400 shadow-[0_0_30px_rgba(0,255,65,0.5)]"
-            : "border-green-900"
+            ? "border-cyan-primary shadow-[0_0_30px_rgba(0,212,255,0.5)]"
+            : "border-cyan-primary/20"
         }`}
       >
         {/* Title bar */}
-        <div className="bg-green-900/20 border-b border-green-900 px-3 py-2 flex items-center gap-2">
-          <span className="text-green-700 text-xs">{"\u25CF"} {"\u25CF"} {"\u25CF"}</span>
-          <span className="text-green-700 text-xs">wojak@roulette:~$</span>
+        <div className="bg-bg-surface border-b border-cyan-primary/20 px-3 py-2 flex items-center gap-2">
+          <span className="text-cyan-primary/40 text-xs">{"\u25CF"} {"\u25CF"} {"\u25CF"}</span>
+          <span className="text-cyan-primary/40 text-xs">wojak@roulette:~$</span>
         </div>
 
         {/* Wheel area */}
@@ -248,8 +257,8 @@ export function RugPullRoulette() {
                 style={{
                   borderLeft: "10px solid transparent",
                   borderRight: "10px solid transparent",
-                  borderTop: "20px solid #00FF41",
-                  filter: "drop-shadow(0 0 6px #00FF41)",
+                  borderTop: "20px solid #00d4ff",
+                  filter: "drop-shadow(0 0 6px #00d4ff)",
                 }}
               />
             </div>
@@ -285,10 +294,10 @@ export function RugPullRoulette() {
                 <span
                   className={`text-lg font-bold ${
                     result === "win"
-                      ? "text-green-400 glow"
+                      ? "text-success-green"
                       : result === "lose"
-                      ? "text-red-500"
-                      : "text-yellow-500"
+                      ? "text-danger-red"
+                      : "text-orange-accent"
                   }`}
                 >
                   {resultText}
@@ -303,18 +312,14 @@ export function RugPullRoulette() {
       <div className="mt-4 space-y-3">
         {/* Bet presets */}
         <div className="flex items-center justify-center gap-2 flex-wrap">
-          <span className="text-green-700 text-xs mr-2">BET:</span>
+          <span className="text-cyan-primary/40 text-xs mr-2 font-mono">BET:</span>
           {BET_PRESETS.map((preset) => (
             <motion.button
               key={preset}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => !isSpinning && setBetAmount(preset)}
-              className={`px-4 py-2 rounded text-sm border transition-colors ${
-                betAmount === preset
-                  ? "bg-green-800/50 border-green-500 text-green-300 glow"
-                  : "bg-green-900/50 border-green-700 text-green-400 hover:bg-green-800/50"
-              }`}
+              className={`hud-btn hud-btn-primary${betAmount === preset ? " hud-glow" : ""}`}
               disabled={isSpinning}
             >
               [{preset}]
@@ -324,11 +329,7 @@ export function RugPullRoulette() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={allIn}
-            className={`px-4 py-2 rounded text-sm border transition-colors ${
-              betAmount === balance
-                ? "bg-red-900/50 border-red-500 text-red-300 glow"
-                : "bg-green-900/50 border-green-700 text-green-400 hover:bg-green-800/50"
-            }`}
+            className="hud-btn hud-btn-accent"
             disabled={isSpinning}
           >
             [ALL IN]
@@ -346,18 +347,16 @@ export function RugPullRoulette() {
             }
             onClick={spin}
             disabled={isSpinning || balance < betAmount}
-            className={`px-8 py-3 rounded border text-sm font-bold transition-colors ${
-              isSpinning || balance < betAmount
-                ? "bg-green-900/20 border-green-900 text-green-800 cursor-not-allowed"
-                : "bg-green-900/50 border-green-700 text-green-400 hover:bg-green-800/50 border-glow"
+            className={`hud-btn hud-btn-primary px-8 py-3 ${
+              isSpinning || balance < betAmount ? "opacity-40 cursor-not-allowed" : ""
             }`}
           >
-            {isSpinning ? "[ SPINNING... ]" : "[ SPIN ]"}
+            {isSpinning ? "[ SPINNING... ]" : "EXECUTE SPIN"}
           </motion.button>
         </div>
 
         {balance < betAmount && !isSpinning && (
-          <p className="text-red-500/70 text-xs text-center">
+          <p className="text-danger-red/70 text-xs text-center">
             insufficient funds ser... lower your bet or reset balance
           </p>
         )}

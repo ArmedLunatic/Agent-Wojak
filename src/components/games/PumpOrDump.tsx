@@ -86,7 +86,7 @@ function drawChart(
   ctx.scale(dpr, dpr);
 
   // Background
-  ctx.fillStyle = "#000000";
+  ctx.fillStyle = "#0c1220";
   ctx.fillRect(0, 0, displayWidth, displayHeight);
 
   if (candles.length === 0) return;
@@ -112,7 +112,7 @@ function drawChart(
     padding + ((maxPrice - price) / totalRange) * (displayHeight - padding * 2);
 
   // Grid lines
-  ctx.strokeStyle = "rgba(0,255,65,0.1)";
+  ctx.strokeStyle = "rgba(0, 212, 255, 0.1)";
   ctx.lineWidth = 1;
   const gridLines = 5;
   for (let i = 0; i <= gridLines; i++) {
@@ -133,7 +133,7 @@ function drawChart(
   }
 
   // Price axis
-  ctx.fillStyle = "rgba(0,255,65,0.4)";
+  ctx.fillStyle = "rgba(255, 255, 255, 0.25)";
   ctx.font = "10px monospace";
   ctx.textAlign = "right";
   for (let i = 0; i <= gridLines; i++) {
@@ -143,7 +143,7 @@ function drawChart(
   }
 
   // Separator line between chart and axis
-  ctx.strokeStyle = "rgba(0,255,65,0.2)";
+  ctx.strokeStyle = "rgba(0, 212, 255, 0.2)";
   ctx.beginPath();
   ctx.moveTo(chartWidth, padding);
   ctx.lineTo(chartWidth, displayHeight - padding);
@@ -158,8 +158,8 @@ function drawChart(
     const x = i * candleWidth + candleWidth / 2;
 
     const isPump = c.direction === "pump";
-    const bodyColor = isPump ? "#00FF41" : "#003B00";
-    const wickColor = isPump ? "#00FF41" : "#006600";
+    const bodyColor = isPump ? "#00d4ff" : "#ff6b35";
+    const wickColor = isPump ? "#00d4ff" : "#ff6b35";
 
     // Wick
     ctx.strokeStyle = wickColor;
@@ -179,7 +179,7 @@ function drawChart(
 
     // Body border for pump candles
     if (isPump) {
-      ctx.strokeStyle = "rgba(0,255,65,0.5)";
+      ctx.strokeStyle = "rgba(0, 212, 255, 0.5)";
       ctx.lineWidth = 0.5;
       ctx.strokeRect(x - bodyWidth / 2, bodyTop, bodyWidth, bodyHeight);
     }
@@ -284,15 +284,20 @@ export function PumpOrDump() {
 
   return (
     <GameShell title="PUMP OR DUMP" result={result} commentary={commentary}>
-      <div className="border rounded-lg overflow-hidden border-green-900">
+      {/* Frame header */}
+      <div className="font-mono text-sm text-cyan-primary tracking-wider mb-3">
+        SIMULATION://MARKET_PREDICTION
+      </div>
+
+      <div className="border rounded-lg overflow-hidden border-cyan-primary/20">
         {/* Title bar */}
-        <div className="bg-green-900/20 border-b border-green-900 px-3 py-2 flex items-center gap-2">
-          <span className="text-green-700 text-xs">{"\u25CF"} {"\u25CF"} {"\u25CF"}</span>
-          <span className="text-green-700 text-xs">wojak@chart:~$</span>
+        <div className="bg-bg-surface border-b border-cyan-primary/20 px-3 py-2 flex items-center gap-2">
+          <span className="text-cyan-primary/40 text-xs">{"\u25CF"} {"\u25CF"} {"\u25CF"}</span>
+          <span className="text-cyan-primary/40 text-xs">wojak@chart:~$</span>
         </div>
 
         {/* Chart area */}
-        <div ref={containerRef} className="w-full bg-black">
+        <div ref={containerRef} className="w-full bg-bg-surface">
           <canvas
             ref={canvasRef}
             className="w-full"
@@ -303,11 +308,11 @@ export function PumpOrDump() {
 
       {/* Streak display */}
       <div className="mt-3 text-center font-mono text-sm">
-        <span className={streak > 0 ? "text-green-400 glow" : "text-green-700"}>
+        <span className="font-mono text-[rgba(255,255,255,0.55)]">
           {streakDisplay}
         </span>
         {streak > 0 && (
-          <span className="text-green-700 text-xs ml-2">
+          <span className="text-[rgba(255,255,255,0.35)] text-xs ml-2">
             [volatility: {(volatility * 100).toFixed(0)}%]
           </span>
         )}
@@ -326,8 +331,8 @@ export function PumpOrDump() {
             <span
               className={`text-lg font-bold ${
                 result === "win"
-                  ? "text-green-400 glow"
-                  : "text-red-500"
+                  ? "text-success-green"
+                  : "text-danger-red"
               }`}
             >
               {resultText}
@@ -343,10 +348,8 @@ export function PumpOrDump() {
           whileTap={{ scale: 0.95 }}
           onClick={() => handleGuess("pump")}
           disabled={isRevealing || balance < 10}
-          className={`px-6 py-3 rounded border text-sm font-bold transition-colors ${
-            isRevealing || balance < 10
-              ? "bg-green-900/20 border-green-900 text-green-800 cursor-not-allowed"
-              : "bg-green-900/50 border-green-700 text-green-400 hover:bg-green-800/50 border-glow"
+          className={`hud-btn hud-btn-primary px-6 py-3 ${
+            isRevealing || balance < 10 ? "opacity-40 cursor-not-allowed" : ""
           }`}
         >
           [ PUMP ]
@@ -357,10 +360,8 @@ export function PumpOrDump() {
           whileTap={{ scale: 0.95 }}
           onClick={() => handleGuess("dump")}
           disabled={isRevealing || balance < 10}
-          className={`px-6 py-3 rounded border text-sm font-bold transition-colors ${
-            isRevealing || balance < 10
-              ? "bg-green-900/20 border-green-900 text-green-800 cursor-not-allowed"
-              : "bg-green-900/50 border-green-700 text-green-400 hover:bg-green-800/50 border-glow"
+          className={`hud-btn hud-btn-accent px-6 py-3 ${
+            isRevealing || balance < 10 ? "opacity-40 cursor-not-allowed" : ""
           }`}
         >
           [ DUMP ]
@@ -368,12 +369,12 @@ export function PumpOrDump() {
       </div>
 
       {balance < 10 && !isRevealing && (
-        <p className="text-red-500/70 text-xs text-center mt-2">
+        <p className="text-danger-red/70 text-xs text-center mt-2">
           insufficient funds ser... need at least 10 $WOJAK to play
         </p>
       )}
 
-      <p className="text-green-700 text-xs text-center mt-2">
+      <p className="text-[rgba(255,255,255,0.35)] text-xs text-center mt-2 font-mono">
         cost: 10 $WOJAK per guess // win: +{streak >= 10 ? 50 : streak >= 5 ? 30 : 20} $WOJAK
       </p>
     </GameShell>
