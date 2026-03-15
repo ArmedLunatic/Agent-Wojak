@@ -9,8 +9,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        'bg-deep': '#06080f',
+        'bg-surface': '#0c1220',
+        'bg-elevated': '#131b2e',
+        'cyan-primary': '#00d4ff',
+        'cyan-muted': '#0a8fb0',
+        'orange-accent': '#ff6b35',
+        'danger-red': '#ff4444',
+        'success-green': '#22c55e',
+      },
+      fontFamily: {
+        display: ['var(--font-display)', 'sans-serif'],
+        body: ['var(--font-body)', 'sans-serif'],
+        mono: ['var(--font-mono)', 'monospace'],
       },
     },
   },
