@@ -85,7 +85,7 @@ export default function AboutPage() {
               </div>
               <div className="flex flex-col sm:flex-row sm:justify-between gap-1 py-2 hover:bg-cyan-primary/5 transition-colors px-2">
                 <span className="text-[rgba(255,255,255,0.25)] font-mono uppercase tracking-wider shrink-0">CA</span>
-                <span className="text-cyan-primary font-mono text-[10px] md:text-xs break-all">BWE8whcy82b1Rht9h45228BogQJZ3BgC17y1Kh5Bpump</span>
+                <span className="text-orange-accent font-mono text-[10px] md:text-xs break-all">COMING SOON — RELAUNCH PENDING</span>
               </div>
             </div>
           </div>
@@ -96,14 +96,11 @@ export default function AboutPage() {
           <div className="bg-bg-surface border border-cyan-primary/10 rounded-lg p-6">
             <h2 className="text-lg font-display text-cyan-primary tracking-wider mb-3">{"// "}LINKS</h2>
             <div className="flex flex-col gap-3">
-              <a
-                href="https://pump.fun/coin/BWE8whcy82b1Rht9h45228BogQJZ3BgC17y1Kh5Bpump"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hud-btn hud-btn-primary text-center"
+              <span
+                className="hud-btn hud-btn-primary text-center opacity-50 cursor-not-allowed"
               >
-                BUY ON PUMP.FUN
-              </a>
+                BUY ON PUMP.FUN — COMING SOON
+              </span>
               <a
                 href="https://x.com/i/communities/2032890338814341221"
                 target="_blank"

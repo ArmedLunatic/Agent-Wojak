@@ -35,14 +35,11 @@ export default function Home() {
         {/* Buy link */}
         <ScrollReveal delay={0.1}>
           <div className="text-center mt-8 mb-4">
-            <a
-              href="https://pump.fun"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hud-btn hud-btn-accent inline-block"
+            <span
+              className="hud-btn hud-btn-accent inline-block opacity-50 cursor-not-allowed"
             >
-              ESCAPE THE WAGE CAGE — BUY $AGENTJAK ON PUMP.FUN
-            </a>
+              RELAUNCH INCOMING — $AGENTJAK COMING SOON
+            </span>
           </div>
         </ScrollReveal>
       </div>

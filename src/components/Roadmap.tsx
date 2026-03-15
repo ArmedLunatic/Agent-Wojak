@@ -251,14 +251,11 @@ export function Roadmap() {
           every holder brings us closer to full sentience ser
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <a
-            href="https://pump.fun/coin/BWE8whcy82b1Rht9h45228BogQJZ3BgC17y1Kh5Bpump"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hud-btn hud-btn-accent text-sm"
+          <span
+            className="hud-btn hud-btn-accent text-sm opacity-50 cursor-not-allowed"
           >
-            [ BUY $AgentJak ]
-          </a>
+            [ BUY $AgentJak — COMING SOON ]
+          </span>
           <a
             href="https://x.com/i/communities/2032890338814341221"
             target="_blank"
