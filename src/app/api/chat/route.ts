@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { chatWithWojak } from "@/lib/llm";
 
-const MAX_MESSAGES = 30;
+const MAX_MESSAGES = 20;
 const MAX_CONTENT_LENGTH = 1000;
 
 export async function POST(req: NextRequest) {
@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
     console.error("Chat error:", msg);
     const isRateLimit = msg.includes("429") || msg.includes("rate limit");
     return NextResponse.json(
-      { error: isRateLimit ? "ser... the ai brain is overloaded. try again in a minute." : "ser... something broke. it's so over." },
+      { error: isRateLimit ? "ser... the bogdanoffs are throttling my feels. he asked too many questions? rate limit it." : "the feels machine broke. bobo attacked the server. it's so over." },
       { status: isRateLimit ? 429 : 500 }
     );
   }

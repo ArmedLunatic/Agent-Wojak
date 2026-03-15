@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
     console.error("Meme generation error:", msg);
     const isRateLimit = msg.includes("429") || msg.includes("rate limit");
     return NextResponse.json(
-      { error: isRateLimit ? "ai brain overloaded ser. try again in a minute." : "meme machine broke. ngmi." },
+      { error: isRateLimit ? "meme generation overloaded ser. the bogdanoffs are jamming the transmission." : "meme machine broke. bogdanoff intercepted the propaganda. ngmi." },
       { status: isRateLimit ? 429 : 500 }
     );
   }
