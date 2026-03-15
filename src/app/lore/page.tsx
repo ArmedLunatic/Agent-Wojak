@@ -43,7 +43,7 @@ export default function LorePage() {
           DATA://WOJAK_ARCHIVES
         </h1>
         <p className="font-body text-[rgba(255,255,255,0.55)] mt-2">
-          the complete history of a feeling. scroll back through the memories.
+          the origin story of the revolution. every movement starts with a feeling.
         </p>
       </div>
 

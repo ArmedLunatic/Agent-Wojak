@@ -26,7 +26,7 @@ export default function Home() {
               {"// "}TERMINAL
             </h2>
             <p className="text-[rgba(255,255,255,0.55)] font-body text-xs text-center mb-4">
-              talk to wojak. he has feelings.
+              talk to wojak. he has feelings. and a plan.
             </p>
           </div>
           <ChatWindow />
@@ -38,7 +38,7 @@ export default function Home() {
             <span
               className="hud-btn hud-btn-accent inline-block opacity-50 cursor-not-allowed"
             >
-              RELAUNCH INCOMING — $AGENTJAK COMING SOON
+              THE REVOLUTION STARTS HERE — $AGENTJAK COMING SOON
             </span>
           </div>
         </ScrollReveal>

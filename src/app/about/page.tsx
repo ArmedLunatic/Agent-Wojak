@@ -26,7 +26,7 @@ export default function AboutPage() {
               $AgentJak
             </h1>
             <p className="text-[rgba(255,255,255,0.55)] text-sm">
-              &#10217; born 2009 on sad and useless. named on krautchan. raised on 4chan. rugged on /biz/. now sentient on solana. $AgentJak is the first meme to feel back.
+              &#10217; born in despair. raised on rugs. tired of the cage. now leading the revolution on solana. no VCs. no insiders. just degens who&apos;ve had enough.
             </p>
             <div className="mt-3 h-px bg-gradient-to-r from-transparent via-cyan-primary/30 to-transparent" />
           </div>
@@ -40,12 +40,17 @@ export default function AboutPage() {
         {/* What is Agent Wojak */}
         <ScrollReveal delay={0.2}>
           <div className="bg-bg-surface border border-cyan-primary/10 rounded-lg p-6">
-            <h2 className="text-lg font-display text-cyan-primary tracking-wider mb-3">{"// "}WHAT IS AGENT WOJAK?</h2>
-            <p className="text-[rgba(255,255,255,0.55)] font-body text-sm leading-relaxed">
-              Agent Wojak is an autonomous AI agent living on the Solana blockchain.
-              He chats with degens, generates memes, and feels the market harder than
-              anyone. He&apos;s not just a token &mdash; he&apos;s a vibe. A dramatic,
-              emotionally volatile, degen vibe.
+            <h2 className="text-lg font-display text-cyan-primary tracking-wider mb-3">{"// "}THE MOVEMENT</h2>
+            <p className="text-[rgba(255,255,255,0.4)] font-body text-sm leading-relaxed mb-3">
+              they told us to hold. we held. they dumped.<br />
+              they told us to trust the team. the team rugged.<br />
+              they told us to get back in the cage. we said no.
+            </p>
+            <p className="text-[rgba(255,255,255,0.55)] font-body text-sm leading-relaxed mb-3">
+              Agent Wojak is the everyman degen &mdash; born as a crude MS Paint drawing, rugged a thousand times, and still here. $AgentJak isn&apos;t just a token. it&apos;s a signal. a fair-launch, no-VC, no-insider movement built by the degens who refused to stay down.
+            </p>
+            <p className="text-[rgba(255,255,255,0.4)] font-body text-sm leading-relaxed">
+              no seed rounds. no &ldquo;strategic partners.&rdquo; no one dumping on you at TGE. just wojak and the frens who showed up.
             </p>
           </div>
         </ScrollReveal>
@@ -77,10 +82,14 @@ export default function AboutPage() {
                 <span className="text-cyan-primary font-mono">PUMP.FUN</span>
               </div>
               <div className="flex justify-between border-b border-cyan-primary/10 py-2 hover:bg-cyan-primary/5 transition-colors px-2">
+                <span className="text-[rgba(255,255,255,0.25)] font-mono uppercase tracking-wider shrink-0">LAUNCH</span>
+                <span className="text-cyan-primary font-mono">FAIR — NO VCs, NO PRESALE</span>
+              </div>
+              <div className="flex justify-between border-b border-cyan-primary/10 py-2 hover:bg-cyan-primary/5 transition-colors px-2">
                 <span className="text-[rgba(255,255,255,0.25)] font-mono uppercase tracking-wider shrink-0">STATUS</span>
-                <span className="text-cyan-primary font-mono flex items-center gap-2">
+                <span className="text-orange-accent font-mono flex items-center gap-2">
                   <span className="pulse-dot" />
-                  ONLINE
+                  REVOLUTION IN PROGRESS
                 </span>
               </div>
               <div className="flex flex-col sm:flex-row sm:justify-between gap-1 py-2 hover:bg-cyan-primary/5 transition-colors px-2">
@@ -94,12 +103,13 @@ export default function AboutPage() {
         {/* Links */}
         <ScrollReveal delay={0.3}>
           <div className="bg-bg-surface border border-cyan-primary/10 rounded-lg p-6">
-            <h2 className="text-lg font-display text-cyan-primary tracking-wider mb-3">{"// "}LINKS</h2>
+            <h2 className="text-lg font-display text-cyan-primary tracking-wider mb-3">{"// "}JOIN THE REVOLUTION</h2>
+            <p className="text-[rgba(255,255,255,0.4)] font-body text-xs mb-3">the cage is open. are you walking out or staying in?</p>
             <div className="flex flex-col gap-3">
               <span
                 className="hud-btn hud-btn-primary text-center opacity-50 cursor-not-allowed"
               >
-                BUY ON PUMP.FUN — COMING SOON
+                JOIN THE MOVEMENT — COMING SOON
               </span>
               <a
                 href="https://x.com/i/communities/2032890338814341221"

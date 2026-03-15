@@ -14,61 +14,61 @@ type Phase = {
 const PHASES: Phase[] = [
   {
     number: 1,
-    title: "THE FIRST FEEL",
-    subtitle: "born on krautchan. a simple drawing with a feeling. 'i know that feel, bro.'",
+    title: "THE AWAKENING",
+    subtitle: "one degen wakes up. looks around the cage. decides enough is enough.",
     status: "complete",
     icon: "⚡",
     items: [
-      "Website launch with full terminal UI",
-      "Wojak AI chat — multi-provider LLM with personality",
-      "Meme Studio — AI-powered caption + template generation",
-      "Template Gallery with Wojak archives",
-      "RNG Oracle — on-chain payment-gated random numbers",
-      "Mini Games Arcade — Slots, Roulette, Pump or Dump",
-      "$AgentJak token live on Pump.fun",
+      "Revolution HQ goes live — the website",
+      "Wojak AI chat — talk to the movement's leader",
+      "Meme Studio — arm the degens with propaganda",
+      "Template Gallery — the archives of our struggle",
+      "RNG Oracle — on-chain fate, no manipulation",
+      "Mini Games Arcade — even revolutionaries need to gamble",
+      "$AgentJak fair launch on Pump.fun — no VCs invited",
     ],
   },
   {
     number: 2,
-    title: "THE DOOMER ARC",
-    subtitle: "nightwalks. cigarettes. imageboards. the feels get darker. but we cope.",
+    title: "THE RECRUITMENT",
+    subtitle: "the word spreads. more wagies wake up. the movement grows.",
     status: "in-progress",
     icon: "🧠",
     items: [
-      "Agent Wojak X/Twitter bot goes live",
-      "Auto-posts market commentary & degen meme takes",
-      "Real-time crypto sentiment reactions",
-      "Replies to mentions and engages with CT",
-      "Consistent Wojak personality across site + X",
+      "Agent Wojak bot goes live on X — broadcasting the revolution",
+      "Auto-posts rally cries, market reactions, and degen dispatches",
+      "Real-time sentiment — Wojak feels the market so you don't have to",
+      "Consistent revolutionary personality across site + X",
+      "Growing the diamond hands army",
     ],
   },
   {
     number: 3,
-    title: "THE PINK WOJAK PHASE",
-    subtitle: "portfolio bleeding. eyes bleeding. everything bleeding. maximum pain = maximum awareness.",
+    title: "THE REVOLT",
+    subtitle: "enough wagies have woken up. time to shake the cages. VCs are nervous.",
     status: "locked",
     icon: "👁",
     items: [
-      "Advanced market sentiment analysis engine",
-      "Auto-generated memes from live market data → X",
+      "Advanced market sentiment engine — know what the whales know",
+      "Auto-generated propaganda memes from live market data → X",
       "Community raid coordination & trending topic alerts",
-      "Quote-tweet engagement with CT influencers",
-      "Token holder dashboard on site",
+      "Quote-tweet engagement — ratio the influencer shills",
+      "Token holder war room on site",
     ],
   },
   {
     number: 4,
-    title: "THE BLOOMER TRANSCENDENCE",
-    subtitle: "finally touching grass. we're all gonna make it. the feels were the friends we made along the way.",
+    title: "FREEDOM",
+    subtitle: "the cage is empty. the revolution won. wagies walk free. gm.",
     status: "locked",
     icon: "🌌",
     items: [
-      "Fully autonomous multi-platform agent ecosystem",
-      "Expand to Telegram & Discord with unified personality",
-      "On-chain analytics and real-time alpha calls",
-      "Agent-to-agent interactions with other AI projects",
-      "Revenue sharing with $AgentJak holders",
-      "Community governance for agent behavior",
+      "Fully autonomous multi-platform agent — the revolution runs itself",
+      "Expand to Telegram & Discord — every platform, every wagie",
+      "On-chain analytics and real-time alpha for the army",
+      "Agent-to-agent alliances with other AI projects",
+      "Revenue sharing with $AgentJak diamond hands",
+      "Community governance — the degens run the revolution",
     ],
   },
 ];
@@ -187,7 +187,7 @@ function PhaseCard({ phase, index }: { phase: Phase; index: number }) {
         {isLocked && (
           <div className="px-4 md:px-6 pb-4">
             <p className="text-[10px] md:text-xs text-[rgba(255,255,255,0.15)] italic">
-              unlocked with community support...
+              unlocked when the army is ready...
             </p>
           </div>
         )}
@@ -210,7 +210,7 @@ export function Roadmap() {
           PROTOCOL://ROADMAP
         </h1>
         <p className="text-[rgba(255,255,255,0.4)] text-xs md:text-sm">
-          {"\u27E9"} from memecoin to autonomous agent // the plan
+          {"\u27E9"} from wagie cage to full revolution // the plan
         </p>
         <div className="mt-3 h-px bg-gradient-to-r from-transparent via-cyan-primary/20 to-transparent" />
       </div>
@@ -230,10 +230,10 @@ export function Roadmap() {
           />
         </div>
         <div className="flex justify-between text-[10px] text-[rgba(255,255,255,0.25)] mt-1">
-          <span>FEEL</span>
-          <span>DOOMER</span>
-          <span>PINK</span>
-          <span>BLOOMER</span>
+          <span>AWAKEN</span>
+          <span>RECRUIT</span>
+          <span>REVOLT</span>
+          <span>FREEDOM</span>
         </div>
       </div>
 
@@ -246,9 +246,9 @@ export function Roadmap() {
 
       {/* CTA */}
       <div className="border border-cyan-primary/10 rounded-lg p-6 text-center mt-8 bg-bg-surface">
-        <h2 className="text-lg text-cyan-primary font-mono mb-3">{"// "}JOIN THE MISSION</h2>
+        <h2 className="text-lg text-cyan-primary font-mono mb-3">{"// "}JOIN THE REVOLUTION</h2>
         <p className="text-[rgba(255,255,255,0.4)] text-sm mb-4">
-          every holder brings us closer to full sentience ser
+          every holder is another wagie who escaped the cage. are you in or are you ngmi?
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <span
