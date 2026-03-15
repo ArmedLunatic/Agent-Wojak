@@ -29,7 +29,7 @@ export default function GamesPage() {
     <PageTransition>
       <div className="space-y-8">
         <ScrollReveal>
-          <h2 className="text-lg glow mb-6">{"// "}GAMES</h2>
+          <h2 className="text-lg font-display text-cyan-primary tracking-wider mb-6">{"// "}GAMES</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {GAMES.map((game) => (
@@ -45,7 +45,7 @@ export default function GamesPage() {
 
           <div className="flex flex-col items-center gap-2 mt-6">
             <GamesBalanceReset />
-            <p className="text-green-700 text-xs text-center">
+            <p className="text-[rgba(255,255,255,0.25)] text-xs text-center">
               all games use fake $WOJAK tokens. no real money. just vibes.
             </p>
           </div>

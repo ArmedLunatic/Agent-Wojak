@@ -7,9 +7,9 @@ export default function MemePage() {
     <PageTransition>
       <div>
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold glow mb-2">MEME LAB</h1>
-          <p className="text-green-600 text-sm">
-            &#10217; describe a scenario. wojak will feel it for you.
+          <h1 className="text-3xl font-display text-cyan-primary tracking-wider mb-2">MEME LAB</h1>
+          <p className="text-[rgba(255,255,255,0.55)] font-body text-sm">
+            enter a scenario. wojak will process it.
           </p>
         </div>
         <ScrollReveal>

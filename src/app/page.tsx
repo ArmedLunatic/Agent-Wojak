@@ -17,15 +17,15 @@ export default function Home() {
         <HeroSection />
 
         {/* Divider */}
-        <div className="my-8 h-px bg-gradient-to-r from-transparent via-green-500/40 to-transparent" />
+        <div className="my-8 h-px bg-gradient-to-r from-transparent via-cyan-primary/30 to-transparent" />
 
         {/* Chat Section */}
         <ScrollReveal>
           <div className="mb-4">
-            <h2 className="text-lg glow mb-1 text-center">
+            <h2 className="text-lg font-display text-cyan-primary tracking-wider mb-1 text-center">
               {"// "}TERMINAL
             </h2>
-            <p className="text-green-700 text-xs text-center mb-4">
+            <p className="text-[rgba(255,255,255,0.55)] font-body text-xs text-center mb-4">
               talk to wojak. he has feelings.
             </p>
           </div>
@@ -39,9 +39,9 @@ export default function Home() {
               href="https://pump.fun"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block border border-green-700/60 rounded px-6 py-3 text-green-400 hover:text-white hover:bg-green-900/30 text-sm transition-all border-glow"
+              className="hud-btn hud-btn-accent inline-block"
             >
-              [ BUY $AgentJak ON PUMP.FUN ]
+              BUY $AGENTJAK ON PUMP.FUN
             </a>
           </div>
         </ScrollReveal>
