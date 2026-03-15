@@ -9,6 +9,7 @@ const NAV_LINKS = [
   { href: "/", label: "CHAT" },
   { href: "/meme", label: "MEME LAB" },
   { href: "/gallery", label: "GALLERY" },
+  { href: "/lore", label: "LORE" },
   { href: "/games", label: "GAMES" },
   { href: "/random", label: "RNG" },
   { href: "/roadmap", label: "ROADMAP" },
