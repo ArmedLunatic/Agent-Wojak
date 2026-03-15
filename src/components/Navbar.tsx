@@ -11,7 +11,8 @@ const NAV_LINKS = [
   { href: "/gallery", label: "GALLERY" },
   { href: "/lore", label: "LORE" },
   { href: "/games", label: "GAMES" },
-{ href: "/roadmap", label: "ROADMAP" },
+  { href: "/random", label: "RNG" },
+  { href: "/roadmap", label: "ROADMAP" },
   { href: "/about", label: "TOKEN" },
 ];
 

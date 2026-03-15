@@ -3,6 +3,7 @@ import { Orbitron, Rajdhani, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { BootSequence } from "@/components/BootSequence";
+import { WalletProvider } from "@/components/WalletProvider";
 
 const orbitron = Orbitron({
   subsets: ["latin"],
@@ -40,11 +41,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${orbitron.variable} ${rajdhani.variable} ${jetbrainsMono.variable}`}>
       <body className="bg-bg-deep text-[rgba(255,255,255,0.92)] font-body min-h-screen relative overflow-x-hidden">
-        <BootSequence />
-        <Navbar />
-        <main className="max-w-4xl mx-auto px-3 md:px-4 py-6 md:py-8">
-          {children}
-        </main>
+        <WalletProvider>
+          <BootSequence />
+          <Navbar />
+          <main className="max-w-4xl mx-auto px-3 md:px-4 py-6 md:py-8">
+            {children}
+          </main>
+        </WalletProvider>
       </body>
     </html>
   );

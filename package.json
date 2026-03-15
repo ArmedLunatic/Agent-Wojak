@@ -9,14 +9,20 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@pump-fun/agent-payments-sdk": "^3.0.0",
+    "@solana/wallet-adapter-base": "^0.9.27",
+    "@solana/wallet-adapter-react": "^0.15.39",
+    "@solana/wallet-adapter-react-ui": "^0.9.39",
+    "@solana/wallet-adapter-wallets": "^0.19.37",
+    "@solana/web3.js": "^1.98.4",
     "framer-motion": "^12.36.0",
     "next": "14.2.35",
     "openai": "^6.29.0",
     "react": "^18",
-    "react-dom": "^18",
-    "twitter-api-v2": "^1.29.0"
+    "react-dom": "^18"
   },
   "devDependencies": {
+    "@netlify/plugin-nextjs": "^5.15.9",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
