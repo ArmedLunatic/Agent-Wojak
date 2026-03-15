@@ -1,14 +1,25 @@
 import type { Metadata } from "next";
-import { Share_Tech_Mono } from "next/font/google";
+import { Orbitron, Rajdhani, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { MatrixRain } from "@/components/MatrixRain";
 import { Navbar } from "@/components/Navbar";
 import { BootSequence } from "@/components/BootSequence";
 import { WalletProvider } from "@/components/WalletProvider";
 
-const shareTechMono = Share_Tech_Mono({
-  weight: "400",
+const orbitron = Orbitron({
   subsets: ["latin"],
+  weight: ["400", "700", "900"],
+  variable: "--font-display",
+});
+
+const rajdhani = Rajdhani({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-body",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
   variable: "--font-mono",
 });
 
@@ -28,17 +39,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={shareTechMono.variable}>
-      <body className="bg-black text-green-400 font-mono min-h-screen relative overflow-x-hidden">
+    <html lang="en" className={`${orbitron.variable} ${rajdhani.variable} ${jetbrainsMono.variable}`}>
+      <body className="bg-bg-deep text-[rgba(255,255,255,0.92)] font-body min-h-screen relative overflow-x-hidden">
         <WalletProvider>
           <BootSequence />
-          <MatrixRain />
-          <div className="relative z-10">
-            <Navbar />
-            <main className="max-w-4xl mx-auto px-3 md:px-4 py-6 md:py-8">
-              {children}
-            </main>
-          </div>
+          <Navbar />
+          <main className="max-w-4xl mx-auto px-3 md:px-4 py-6 md:py-8">
+            {children}
+          </main>
         </WalletProvider>
       </body>
     </html>
