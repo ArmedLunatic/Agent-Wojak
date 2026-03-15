@@ -17,11 +17,13 @@ export function WojakReaction({ result, commentary }: WojakReactionProps) {
   return (
     <div className="flex items-start gap-3">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={imageMap[result]}
-        alt={`Wojak ${result}`}
-        className="w-16 h-16 rounded border border-green-900 object-cover flex-shrink-0"
-      />
+      <div className="border border-cyan-primary/30 rounded flex-shrink-0">
+        <img
+          src={imageMap[result]}
+          alt={`Wojak ${result}`}
+          className="w-16 h-16 rounded object-cover"
+        />
+      </div>
       <AnimatePresence mode="wait">
         <motion.p
           key={commentary}
@@ -29,9 +31,9 @@ export function WojakReaction({ result, commentary }: WojakReactionProps) {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -10 }}
           transition={{ type: "spring", stiffness: 300, damping: 25 }}
-          className="text-green-400 text-sm italic pt-1"
+          className="font-mono text-[rgba(255,255,255,0.55)] text-sm pt-1"
         >
-          {commentary}
+          {`◆ ANALYSIS: "${commentary}"`}
         </motion.p>
       </AnimatePresence>
     </div>

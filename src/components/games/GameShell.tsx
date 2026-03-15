@@ -14,10 +14,9 @@ interface GameShellProps {
 export function GameShell({ title, children, result, commentary }: GameShellProps) {
   const { balance } = useGameBalance();
   return (
-    <div className="border border-green-900 rounded-lg p-4 md:p-6 border-glow space-y-4">
+    <div className="bg-bg-deep border border-cyan-primary/20 rounded-lg p-4 md:p-6 space-y-4">
       {/* Header */}
-      <h2 className="text-lg glow mb-3">
-        {"// "}
+      <h2 className="font-display text-cyan-primary tracking-wider uppercase text-lg mb-3">
         {title}
       </h2>
 
@@ -29,7 +28,7 @@ export function GameShell({ title, children, result, commentary }: GameShellProp
 
       {/* Wojak Reaction */}
       {result && commentary && (
-        <div className="pt-2 border-t border-green-900/50">
+        <div className="pt-2 border-t border-cyan-primary/20">
           <WojakReaction result={result} commentary={commentary} />
         </div>
       )}

@@ -16,33 +16,23 @@ export function GameCard({ title, description, icon, href }: GameCardProps) {
       <motion.div
         whileHover={{ scale: 1.03 }}
         transition={{ type: "spring", stiffness: 400, damping: 20 }}
-        className="group relative border border-green-900 rounded-lg p-5 cursor-pointer h-full flex flex-col hover:border-green-700 hover:border-glow transition-colors duration-300"
+        className="bg-bg-surface border border-cyan-primary/20 rounded-lg p-5 cursor-pointer h-full flex flex-col hover:shadow-[0_0_15px_rgba(0,212,255,0.08)] transition-all duration-300"
       >
-        {/* Scanline overlay on hover */}
-        <div className="absolute inset-0 z-10 pointer-events-none rounded-lg bg-[repeating-linear-gradient(0deg,rgba(0,255,65,0.03)_0px,rgba(0,255,65,0.03)_1px,transparent_1px,transparent_3px)] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-        {/* Corner brackets */}
-        <div className="absolute top-1 left-1 w-3 h-3 border-t border-l border-green-500/0 group-hover:border-green-500/80 transition-all duration-300" />
-        <div className="absolute top-1 right-1 w-3 h-3 border-t border-r border-green-500/0 group-hover:border-green-500/80 transition-all duration-300" />
-        <div className="absolute bottom-1 left-1 w-3 h-3 border-b border-l border-green-500/0 group-hover:border-green-500/80 transition-all duration-300" />
-        <div className="absolute bottom-1 right-1 w-3 h-3 border-b border-r border-green-500/0 group-hover:border-green-500/80 transition-all duration-300" />
-
         {/* Icon */}
         <div className="text-4xl mb-3">{icon}</div>
 
         {/* Title */}
-        <h3 className="text-green-400 font-mono text-sm mb-2 glow">
-          {"// "}
+        <h3 className="text-cyan-primary font-mono text-sm mb-2 tracking-wider uppercase">
           {title}
         </h3>
 
         {/* Description */}
-        <p className="text-green-600 text-sm flex-grow">{description}</p>
+        <p className="text-[rgba(255,255,255,0.55)] text-sm flex-grow">{description}</p>
 
         {/* Play Button */}
         <div className="mt-4">
-          <span className="bg-green-900/50 border border-green-700 px-4 py-2 rounded text-green-400 hover:bg-green-800/50 transition-colors text-sm inline-block">
-            [PLAY]
+          <span className="hud-btn hud-btn-primary text-sm inline-block">
+            LAUNCH
           </span>
         </div>
       </motion.div>

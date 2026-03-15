@@ -11,9 +11,9 @@ export function GamesBalanceReset() {
       <BalanceDisplay balance={balance} />
       <button
         onClick={resetBalance}
-        className="text-green-700 hover:text-green-400 text-xs transition-colors"
+        className="hud-btn hud-btn-ghost text-xs font-mono text-[rgba(255,255,255,0.55)]"
       >
-        [RESET]
+        RESET BALANCE
       </button>
     </div>
   );
