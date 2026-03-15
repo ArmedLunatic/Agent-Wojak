@@ -66,7 +66,7 @@ export function HeroSection() {
         <div className="absolute inset-0 rounded-full bg-cyan-primary/10 blur-xl scale-125" />
 
         <HudFrame>
-          <div className="relative w-40 h-40 md:w-52 md:h-52 mx-auto rounded-full overflow-hidden border-2 border-cyan-primary/20 border-glow">
+          <div className="relative w-40 h-40 md:w-52 md:h-52 mx-auto rounded-full overflow-hidden border-2 border-cyan-primary/20 hud-glow">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/templates/default.jpg"
@@ -84,7 +84,7 @@ export function HeroSection() {
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ type: "spring", stiffness: 200, damping: 20, delay: 0.2 }}
-        className="text-3xl sm:text-5xl md:text-7xl font-bold font-display glow glitch mb-4 tracking-wider text-cyan-primary"
+        className="text-3xl sm:text-5xl md:text-7xl font-bold font-display mb-4 tracking-wider text-cyan-primary"
         style={{ textShadow: "0 0 20px rgba(0,212,255,0.3)" }}
       >
         AGENT WOJAK
@@ -101,7 +101,7 @@ export function HeroSection() {
       </motion.p>
 
       {/* Typing tagline */}
-      <div className="inline-block border border-cyan-primary/20 rounded px-6 py-3 bg-black/50 border-glow">
+      <div className="inline-block border border-cyan-primary/20 rounded px-6 py-3 bg-black/50 hud-glow">
         <span className="text-cyan-primary text-sm md:text-base">
           {">"} {displayText}
         </span>
