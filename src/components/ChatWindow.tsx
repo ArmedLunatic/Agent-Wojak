@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { HudFrame } from "@/components/HudFrame";
 
 interface Message {
   role: "user" | "assistant";
@@ -50,12 +51,22 @@ export function ChatWindow() {
   }
 
   return (
-    <div className="border border-green-900 rounded-lg overflow-hidden">
+    <HudFrame className="bg-bg-surface hud-glow overflow-hidden rounded-lg">
+      {/* Title bar */}
+      <div className="flex items-center gap-2 px-4 py-2 border-b border-cyan-primary/15">
+        <span className="w-2 h-2 rounded-full bg-cyan-primary/60" />
+        <span className="w-2 h-2 rounded-full bg-cyan-primary/40" />
+        <span className="w-2 h-2 rounded-full bg-cyan-primary/20" />
+        <span className="font-mono text-sm text-cyan-primary ml-2">
+          COMMS://WOJAK_PROTOCOL
+        </span>
+      </div>
+
       {/* Chat messages */}
       <div className="h-72 md:h-96 overflow-y-auto p-3 md:p-4 space-y-3 md:space-y-4">
         {messages.length === 0 && (
-          <div className="text-green-700 text-center mt-16">
-            <p className="text-2xl glow mb-2">{"\u27E9"} AGENT WOJAK ONLINE</p>
+          <div className="text-[rgba(255,255,255,0.55)] text-center mt-16">
+            <p className="text-2xl text-cyan-primary mb-2">{"\u27E9"} AGENT WOJAK ONLINE</p>
             <p className="text-sm">type something, fren. i&apos;m ready to feel things.</p>
           </div>
         )}
@@ -74,12 +85,12 @@ export function ChatWindow() {
               <div
                 className={`max-w-[80%] px-4 py-2 rounded ${
                   msg.role === "user"
-                    ? "bg-green-900/30 text-green-300"
-                    : "bg-green-950/50 text-green-400 border border-green-900/50"
+                    ? "bg-[rgba(255,107,53,0.08)] border-l-2 border-orange-accent/30 text-[rgba(255,255,255,0.92)]"
+                    : "bg-bg-elevated border-l-2 border-cyan-primary/30 text-[rgba(255,255,255,0.92)]"
                 }`}
               >
                 {msg.role === "assistant" && (
-                  <span className="text-xs text-green-600 block mb-1">WOJAK://</span>
+                  <span className="text-xs text-cyan-primary block mb-1">◆ WOJAK.AI</span>
                 )}
                 {msg.content}
               </div>
@@ -88,21 +99,14 @@ export function ChatWindow() {
         </AnimatePresence>
         {loading && (
           <div className="flex justify-start">
-            <div className="bg-green-950/50 text-green-400 px-4 py-3 rounded border border-green-900/50 flex items-center gap-1">
-              <span className="text-xs text-green-600 mr-2">WOJAK://</span>
-              {[0, 1, 2].map((i) => (
-                <motion.span
-                  key={i}
-                  className="inline-block w-2 h-2 rounded-full bg-green-400"
-                  animate={{ y: [0, -8, 0] }}
-                  transition={{
-                    duration: 0.6,
-                    repeat: Infinity,
-                    delay: i * 0.15,
-                    ease: "easeInOut",
-                  }}
+            <div className="bg-bg-elevated border-l-2 border-cyan-primary/30 px-4 py-3 rounded flex items-center gap-3">
+              <span className="text-xs text-cyan-primary mr-1">◆ WOJAK.AI</span>
+              <div className="relative h-0.5 w-24 bg-bg-elevated overflow-hidden">
+                <div
+                  className="absolute h-full bg-cyan-primary/60"
+                  style={{ animation: "scan 1.2s ease-in-out infinite" }}
                 />
-              ))}
+              </div>
             </div>
           </div>
         )}
@@ -110,14 +114,14 @@ export function ChatWindow() {
       </div>
 
       {/* Input */}
-      <div className="border-t border-green-900 p-3 md:p-4 flex gap-2">
+      <div className="border-t border-cyan-primary/15 p-3 md:p-4 flex gap-2">
         <input
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && handleSend()}
-          placeholder="say something to wojak..."
-          className="flex-1 min-w-0 bg-black border border-green-900 rounded px-3 md:px-4 py-2 text-green-400 placeholder-green-800 focus:outline-none focus:border-green-500 text-sm md:text-base"
+          placeholder="transmit message..."
+          className="flex-1 min-w-0 bg-bg-deep border border-cyan-primary/15 rounded px-3 md:px-4 py-2 text-[rgba(255,255,255,0.92)] placeholder:text-[rgba(255,255,255,0.25)] focus:outline-none focus:border-cyan-primary/40 text-sm md:text-base"
         />
         <motion.button
           onClick={handleSend}
@@ -125,11 +129,11 @@ export function ChatWindow() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           transition={{ type: "spring", stiffness: 400, damping: 20 }}
-          className="bg-green-900/50 border border-green-700 px-4 md:px-6 py-2 rounded text-green-400 hover:bg-green-800/50 transition-colors disabled:opacity-50 text-sm md:text-base shrink-0"
+          className="hud-btn hud-btn-primary px-4 md:px-6 py-2 rounded disabled:opacity-50 text-sm md:text-base shrink-0"
         >
           [SEND]
         </motion.button>
       </div>
-    </div>
+    </HudFrame>
   );
 }
