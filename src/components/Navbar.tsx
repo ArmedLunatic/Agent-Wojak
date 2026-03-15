@@ -11,6 +11,7 @@ const NAV_LINKS = [
   { href: "/gallery", label: "[GALLERY]" },
   { href: "/games", label: "[GAMES]" },
   { href: "/random", label: "[RNG]" },
+  { href: "/roadmap", label: "[ROADMAP]" },
   { href: "/about", label: "[TOKEN]" },
 ];
 
@@ -32,7 +33,7 @@ export function Navbar() {
         </Link>
 
         {/* Desktop nav */}
-        <div className="hidden md:flex gap-4 text-sm">
+        <div className="hidden md:flex gap-3 text-sm">
           {NAV_LINKS.map((link) => (
             <Link key={link.href} href={link.href} className="relative">
               <motion.span
