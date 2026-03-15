@@ -4,6 +4,7 @@ import { useState, useCallback, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { GameShell } from "./GameShell";
 import { useGameBalance } from "./useGameBalance";
+import { pickRandom } from "./utils";
 
 type Candle = {
   open: number;
@@ -30,10 +31,6 @@ const STREAK_COMMENTS = [
   "10 in a row? we're literally satoshi",
   "nobody can stop us... right?",
 ];
-
-function pickRandom<T>(arr: T[]): T {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
 
 function generateCandle(prevClose: number, volatility: number): Candle {
   const direction = Math.random() > 0.5 ? "pump" : "dump";

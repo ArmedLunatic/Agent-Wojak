@@ -1,11 +1,12 @@
 import { GameCard } from "@/components/games/GameCard";
+import { GamesBalanceReset } from "@/components/games/GamesBalanceReset";
 import { PageTransition } from "@/components/PageTransition";
 import { ScrollReveal } from "@/components/ScrollReveal";
 
 const GAMES = [
   {
     title: "Rug Pull Roulette",
-    icon: "🎰",
+    icon: "🎡",
     href: "/games/roulette",
     description: "spin the wheel. dodge the rug. maybe moon.",
   },
@@ -42,9 +43,12 @@ export default function GamesPage() {
             ))}
           </div>
 
-          <p className="text-green-700 text-xs text-center mt-6">
-            all games use fake $WOJAK tokens. no real money. just vibes.
-          </p>
+          <div className="flex flex-col items-center gap-2 mt-6">
+            <GamesBalanceReset />
+            <p className="text-green-700 text-xs text-center">
+              all games use fake $WOJAK tokens. no real money. just vibes.
+            </p>
+          </div>
         </ScrollReveal>
       </div>
     </PageTransition>

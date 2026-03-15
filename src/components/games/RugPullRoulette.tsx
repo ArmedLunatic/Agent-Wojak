@@ -4,6 +4,7 @@ import { useState, useCallback, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { GameShell } from "./GameShell";
 import { useGameBalance } from "./useGameBalance";
+import { pickRandom } from "./utils";
 
 const SEGMENTS = [
   { label: "2x MOON", multiplier: 2, color: "#00FF41" },
@@ -11,7 +12,7 @@ const SEGMENTS = [
   { label: "3x PUMP", multiplier: 3, color: "#00CC33" },
   { label: "RUG PULL", multiplier: 0, color: "#441111" },
   { label: "DIAMOND 5x", multiplier: 5, color: "#00FF90" },
-  { label: "LIQUIDATED", multiplier: -1, color: "#331111" },
+  { label: "LIQUIDATED", multiplier: 0, color: "#331111" },
   { label: "1.5x", multiplier: 1.5, color: "#009922" },
   { label: "COPE 0.5x", multiplier: 0.5, color: "#006611" },
 ];
@@ -35,10 +36,6 @@ const SMALL_WIN_COMMENTS = [
   "copium levels: maximum",
   "ser it could have been worse... right?",
 ];
-
-function pickRandom<T>(arr: T[]): T {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
 
 /** Pick a segment index with weighting — bad outcomes are slightly more likely */
 function pickWeightedSegment(): number {

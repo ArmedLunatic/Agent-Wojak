@@ -42,7 +42,7 @@ export function Navbar() {
               >
                 {link.label}
               </motion.span>
-              {pathname === link.href && (
+              {(pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href))) && (
                 <motion.div
                   layoutId="nav-underline"
                   className="absolute -bottom-1 left-0 right-0 h-[2px] bg-green-500"
@@ -81,7 +81,7 @@ export function Navbar() {
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
                   className={`block px-3 py-2 rounded text-sm transition-colors ${
-                    pathname === link.href
+                    (pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href)))
                       ? "bg-green-900/30 text-white border-l-2 border-green-500"
                       : "text-green-400 hover:bg-green-900/20 hover:text-white"
                   }`}

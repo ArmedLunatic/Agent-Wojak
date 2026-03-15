@@ -4,6 +4,7 @@ import { useState, useCallback, useMemo } from "react";
 import { motion } from "framer-motion";
 import { GameShell } from "./GameShell";
 import { useGameBalance } from "./useGameBalance";
+import { pickRandom } from "./utils";
 
 const SYMBOLS = [
   { emoji: "🌙", name: "MOON", weight: 3 },
@@ -33,10 +34,6 @@ const BIG_WIN_COMMENTS = [
   "ser the moon... i can see it...",
   "PEPE BLESSED US TODAY",
 ];
-
-function pickRandom<T>(arr: T[]): T {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
 
 // Build weighted pool for random selection
 function buildWeightedPool() {
