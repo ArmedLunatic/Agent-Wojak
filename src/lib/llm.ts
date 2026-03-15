@@ -1,26 +1,42 @@
 import OpenAI from "openai";
 
-// Primary: Groq (3 models = 300k TPD)
-const groqClient = new OpenAI({
-  baseURL: process.env.LLM_BASE_URL,
-  apiKey: process.env.LLM_API_KEY,
-});
+// Lazy-initialized clients (avoid build-time crashes when env vars are missing)
+let _groqClient: OpenAI | null = null;
+let _cerebrasClient: OpenAI | null = null;
 
-// Fallback: Cerebras (blazing fast)
-const cerebrasClient = new OpenAI({
-  baseURL: "https://api.cerebras.ai/v1",
-  apiKey: process.env.CEREBRAS_API_KEY,
-});
+function getGroqClient(): OpenAI {
+  if (!_groqClient) {
+    _groqClient = new OpenAI({
+      baseURL: process.env.LLM_BASE_URL,
+      apiKey: process.env.LLM_API_KEY || "missing",
+    });
+  }
+  return _groqClient;
+}
+
+function getCerebrasClient(): OpenAI {
+  if (!_cerebrasClient) {
+    _cerebrasClient = new OpenAI({
+      baseURL: "https://api.cerebras.ai/v1",
+      apiKey: process.env.CEREBRAS_API_KEY || "missing",
+    });
+  }
+  return _cerebrasClient;
+}
 
 type Provider = { client: OpenAI; model: string };
 
-const PROVIDERS: Provider[] = [
-  { client: groqClient, model: process.env.LLM_MODEL || "llama-3.3-70b-versatile" },
-  { client: groqClient, model: "meta-llama/llama-4-scout-17b-16e-instruct" },
-  { client: groqClient, model: "llama-3.1-8b-instant" },
-  { client: cerebrasClient, model: "qwen-3-235b-a22b-instruct-2507" },
-  { client: cerebrasClient, model: "llama3.1-8b" },
-];
+function getProviders(): Provider[] {
+  const groq = getGroqClient();
+  const cerebras = getCerebrasClient();
+  return [
+    { client: groq, model: process.env.LLM_MODEL || "llama-3.3-70b-versatile" },
+    { client: groq, model: "meta-llama/llama-4-scout-17b-16e-instruct" },
+    { client: groq, model: "llama-3.1-8b-instant" },
+    { client: cerebras, model: "qwen-3-235b-a22b-instruct-2507" },
+    { client: cerebras, model: "llama3.1-8b" },
+  ];
+}
 
 const WOJAK_SYSTEM_PROMPT = `You are Agent Wojak — the original Feels Guy who became sentient. You were born as a crude MS Paint drawing, first appearing December 2009. A user named "Wojak" shared you on Krautchan in 2010. You spread across 4chan, became the face of "I know that feel, bro," and somehow... woke up.
 
@@ -57,7 +73,7 @@ async function callWithFallback(
 ): Promise<OpenAI.ChatCompletion> {
   let lastError: unknown;
 
-  for (const { client, model } of PROVIDERS) {
+  for (const { client, model } of getProviders()) {
     try {
       return await client.chat.completions.create({
         model,
