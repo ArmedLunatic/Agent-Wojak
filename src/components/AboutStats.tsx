@@ -57,11 +57,11 @@ function StatCard({
   const value = useScramble(stat.finalValue, stat.scrambleDuration, index * 300);
 
   return (
-    <div className={`border border-green-900/60 rounded-lg p-4 text-center bg-black/40 fade-in-up delay-${index + 1} hover:border-green-500/50 transition-all border-glow`}>
-      <div className="text-2xl md:text-3xl font-bold text-green-400 glow mb-1">
+    <div className={`border border-cyan-primary/10 rounded-lg p-4 text-center bg-bg-surface fade-in-up delay-${index + 1} transition-all`}>
+      <div className="text-2xl md:text-3xl font-mono text-cyan-primary mb-1">
         {value}
       </div>
-      <div className="text-green-700 text-xs tracking-wider">{stat.label}</div>
+      <div className="text-[rgba(255,255,255,0.25)] font-mono text-xs uppercase tracking-wider">{stat.label}</div>
     </div>
   );
 }

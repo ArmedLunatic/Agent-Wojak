@@ -76,21 +76,21 @@ const PHASES: Phase[] = [
 function StatusBadge({ status }: { status: Phase["status"] }) {
   if (status === "complete") {
     return (
-      <span className="text-xs font-mono px-2 py-0.5 rounded border border-green-500/60 text-green-400 bg-green-900/30">
-        [COMPLETE]
+      <span className="text-xs font-mono px-2 py-0.5 rounded bg-cyan-primary/20 text-cyan-primary">
+        DEPLOYED
       </span>
     );
   }
   if (status === "in-progress") {
     return (
-      <span className="text-xs font-mono px-2 py-0.5 rounded border border-green-500/60 text-green-300 bg-green-900/20 animate-pulse">
-        [IN PROGRESS]
+      <span className="text-xs font-mono px-2 py-0.5 rounded bg-orange-accent/20 text-orange-accent animate-pulse">
+        IN PROGRESS
       </span>
     );
   }
   return (
-    <span className="text-xs font-mono px-2 py-0.5 rounded border border-green-900 text-green-800 bg-green-900/10">
-      🔒 [LOCKED]
+    <span className="text-xs font-mono px-2 py-0.5 rounded border border-[rgba(255,255,255,0.1)] text-[rgba(255,255,255,0.25)]">
+      LOCKED
     </span>
   );
 }
@@ -109,28 +109,20 @@ function PhaseCard({ phase, index }: { phase: Phase; index: number }) {
     >
       {/* Timeline connector */}
       {index < PHASES.length - 1 && (
-        <div
-          className={`absolute left-6 top-full w-px h-8 border-l-2 border-dashed ${
-            isLocked ? "border-green-900/40" : "border-green-700/60"
-          }`}
-        />
+        <div className="absolute left-6 top-full w-px h-8 bg-cyan-primary/20" />
       )}
 
       <div
-        className={`border rounded-lg overflow-hidden transition-all ${
+        className={`border rounded-lg overflow-hidden transition-all bg-bg-surface ${
           isComplete
-            ? "border-green-500/50 border-glow"
+            ? "border-cyan-primary/40 hud-glow"
             : isInProgress
-            ? "border-green-500/40 shadow-[0_0_15px_rgba(0,255,65,0.15)]"
-            : "border-green-900/50"
+            ? "border-orange-accent/20"
+            : "border-[rgba(255,255,255,0.05)] opacity-40"
         }`}
       >
         {/* Phase header */}
-        <div
-          className={`px-4 md:px-6 py-4 flex items-center gap-3 md:gap-4 ${
-            isLocked ? "bg-green-900/5" : "bg-green-900/20"
-          }`}
-        >
+        <div className="px-4 md:px-6 py-4 flex items-center gap-3 md:gap-4">
           {/* Phase icon */}
           <div
             className={`text-2xl md:text-3xl shrink-0 ${
@@ -145,31 +137,33 @@ function PhaseCard({ phase, index }: { phase: Phase; index: number }) {
               <h3
                 className={`text-sm md:text-base font-bold tracking-wider ${
                   isLocked
-                    ? "text-green-800"
-                    : "text-green-400 glow"
-                } ${isInProgress ? "glitch" : ""}`}
+                    ? "text-[rgba(255,255,255,0.25)]"
+                    : isInProgress
+                    ? "text-orange-accent"
+                    : "text-cyan-primary"
+                }`}
               >
                 PHASE {phase.number}: {phase.title}
               </h3>
               <StatusBadge status={phase.status} />
             </div>
-            <p className={`text-xs ${isLocked ? "text-green-900" : "text-green-700"}`}>
+            <p className={`text-xs ${isLocked ? "text-[rgba(255,255,255,0.15)]" : "text-[rgba(255,255,255,0.4)]"}`}>
               {"\u27E9"} {phase.subtitle}
             </p>
           </div>
         </div>
 
         {/* Deliverables */}
-        <div className={`px-4 md:px-6 py-4 space-y-2 ${isLocked ? "opacity-40" : ""}`}>
+        <div className="px-4 md:px-6 py-4 space-y-2">
           {phase.items.map((item, i) => (
             <div key={i} className="flex items-start gap-2 text-xs md:text-sm">
               <span
                 className={`shrink-0 mt-0.5 ${
                   isComplete
-                    ? "text-green-500"
+                    ? "text-cyan-primary"
                     : isInProgress
-                    ? "text-green-600"
-                    : "text-green-900"
+                    ? "text-orange-accent"
+                    : "text-[rgba(255,255,255,0.25)]"
                 }`}
               >
                 {isComplete ? "✓" : isInProgress ? "▸" : "○"}
@@ -177,10 +171,10 @@ function PhaseCard({ phase, index }: { phase: Phase; index: number }) {
               <span
                 className={
                   isComplete
-                    ? "text-green-500"
+                    ? "text-cyan-primary/80"
                     : isInProgress
-                    ? "text-green-400"
-                    : "text-green-800"
+                    ? "text-[rgba(255,255,255,0.6)]"
+                    : "text-[rgba(255,255,255,0.25)]"
                 }
               >
                 {item}
@@ -192,7 +186,7 @@ function PhaseCard({ phase, index }: { phase: Phase; index: number }) {
         {/* Locked overlay hint */}
         {isLocked && (
           <div className="px-4 md:px-6 pb-4">
-            <p className="text-[10px] md:text-xs text-green-900 italic">
+            <p className="text-[10px] md:text-xs text-[rgba(255,255,255,0.15)] italic">
               unlocked with community support...
             </p>
           </div>
@@ -200,7 +194,7 @@ function PhaseCard({ phase, index }: { phase: Phase; index: number }) {
 
         {/* Scanline overlay for locked phases */}
         {isLocked && (
-          <div className="absolute inset-0 bg-[repeating-linear-gradient(0deg,rgba(0,255,65,0.02)_0px,rgba(0,255,65,0.02)_1px,transparent_1px,transparent_3px)] pointer-events-none" />
+          <div className="absolute inset-0 bg-[repeating-linear-gradient(0deg,rgba(0,255,240,0.01)_0px,rgba(0,255,240,0.01)_1px,transparent_1px,transparent_3px)] pointer-events-none" />
         )}
       </div>
     </motion.div>
@@ -212,31 +206,30 @@ export function Roadmap() {
     <div className="space-y-4">
       {/* Header */}
       <div className="text-center mb-8">
-        <h1 className="text-2xl md:text-3xl font-bold glow glitch mb-2">
-          ROADMAP
+        <h1 className="font-display text-2xl md:text-3xl text-cyan-primary mb-2">
+          PROTOCOL://ROADMAP
         </h1>
-        <p className="text-green-600 text-xs md:text-sm">
+        <p className="text-[rgba(255,255,255,0.4)] text-xs md:text-sm">
           {"\u27E9"} from memecoin to autonomous agent // the plan
         </p>
-        <div className="mt-3 h-px bg-gradient-to-r from-transparent via-green-500/50 to-transparent" />
+        <div className="mt-3 h-px bg-gradient-to-r from-transparent via-cyan-primary/20 to-transparent" />
       </div>
 
       {/* Progress bar */}
-      <div className="border border-green-900 rounded-lg p-3 md:p-4 mb-6">
-        <div className="flex items-center justify-between text-xs text-green-700 mb-2">
+      <div className="border border-cyan-primary/10 rounded-lg p-3 md:p-4 mb-6 bg-bg-surface">
+        <div className="flex items-center justify-between text-xs text-[rgba(255,255,255,0.4)] mb-2">
           <span>OVERALL PROGRESS</span>
-          <span className="text-green-400 glow">25%</span>
+          <span className="text-cyan-primary font-mono">25%</span>
         </div>
-        <div className="h-2 bg-green-900/30 rounded-full overflow-hidden">
+        <div className="h-1 bg-bg-elevated rounded-full overflow-hidden">
           <motion.div
-            className="h-full bg-green-500 rounded-full"
+            className="h-full bg-cyan-primary rounded-full"
             initial={{ width: 0 }}
             animate={{ width: "25%" }}
             transition={{ duration: 1.5, ease: "easeOut", delay: 0.5 }}
-            style={{ boxShadow: "0 0 10px #00FF41, 0 0 20px #00FF4160" }}
           />
         </div>
-        <div className="flex justify-between text-[10px] text-green-800 mt-1">
+        <div className="flex justify-between text-[10px] text-[rgba(255,255,255,0.25)] mt-1">
           <span>GENESIS</span>
           <span>AWAKENING</span>
           <span>SENTIENCE</span>
@@ -252,9 +245,9 @@ export function Roadmap() {
       </div>
 
       {/* CTA */}
-      <div className="border border-green-900 rounded-lg p-6 border-glow text-center mt-8">
-        <h2 className="text-lg glow mb-3">{"// "}JOIN THE MISSION</h2>
-        <p className="text-green-500 text-sm mb-4">
+      <div className="border border-cyan-primary/10 rounded-lg p-6 text-center mt-8 bg-bg-surface">
+        <h2 className="text-lg text-cyan-primary font-mono mb-3">{"// "}JOIN THE MISSION</h2>
+        <p className="text-[rgba(255,255,255,0.4)] text-sm mb-4">
           every holder brings us closer to full sentience ser
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -262,7 +255,7 @@ export function Roadmap() {
             href="https://pump.fun/coin/BWE8whcy82b1Rht9h45228BogQJZ3BgC17y1Kh5Bpump"
             target="_blank"
             rel="noopener noreferrer"
-            className="border border-green-700/60 rounded px-6 py-3 text-center hover:bg-green-900/20 hover:text-white transition-all text-sm"
+            className="hud-btn hud-btn-accent text-sm"
           >
             [ BUY $AgentJak ]
           </a>
@@ -270,7 +263,7 @@ export function Roadmap() {
             href="https://x.com/i/communities/2032890338814341221"
             target="_blank"
             rel="noopener noreferrer"
-            className="border border-green-700/60 rounded px-6 py-3 text-center hover:bg-green-900/20 hover:text-white transition-all text-sm"
+            className="hud-btn hud-btn-primary text-sm"
           >
             [ JOIN X COMMUNITY ]
           </a>
