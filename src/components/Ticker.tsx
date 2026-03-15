@@ -2,18 +2,9 @@
 
 export function Ticker() {
   const items = [
-    "$AgentJak",
-    "SOLANA",
-    "NGMI",
-    "WAGMI",
-    "IT&apos;S SO OVER",
-    "WE&apos;RE SO BACK",
-    "DEGEN MODE",
-    "FEEL THE MARKET",
-    "SER PLS",
-    "TO THE MOON",
-    "PROBABLY NOTHING",
-    "GN",
+    "$AgentJak", "FEELS PROTOCOL", "WAGMI", "HE BOUGHT?", "DUMP IT",
+    "BOBO LURKING", "MUMU RISING", "DOOMER ARC", "TOUCH GRASS",
+    "NGMI", "I KNOW THAT FEEL",
   ];
 
   // Double the items so the scroll loops seamlessly

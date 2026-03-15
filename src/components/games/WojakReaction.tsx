@@ -13,6 +13,12 @@ const imageMap: Record<WojakReactionProps["result"], string> = {
   neutral: "/templates/default.jpg",
 };
 
+const feelsMap: Record<WojakReactionProps["result"], string> = {
+  win: "BLOOMER",
+  lose: "DOOMER",
+  neutral: "COPING",
+};
+
 export function WojakReaction({ result, commentary }: WojakReactionProps) {
   return (
     <div className="flex items-start gap-3">
@@ -33,7 +39,7 @@ export function WojakReaction({ result, commentary }: WojakReactionProps) {
           transition={{ type: "spring", stiffness: 300, damping: 25 }}
           className="font-mono text-[rgba(255,255,255,0.55)] text-sm pt-1"
         >
-          {`◆ ANALYSIS: "${commentary}"`}
+          {`◆ ANALYSIS: "${commentary}" [FEELS: ${feelsMap[result]}]`}
         </motion.p>
       </AnimatePresence>
     </div>

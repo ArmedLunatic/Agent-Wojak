@@ -15,21 +15,21 @@ type Candle = {
 };
 
 const CORRECT_COMMENTS = [
-  "called it ser... maybe we're not ngmi after all",
-  "PUMP AND DUMP MASTER right here",
-  "the chart whispers to me...",
+  "bloomer mode activated. we're so back",
+  "bobo tried, but mumu prevails",
+  "i know that feel... and it's euphoria",
 ];
 
 const WRONG_COMMENTS = [
-  "ser... the chart lied to me...",
-  "my technical analysis was copium all along",
-  "WHO DUMPED ON ME",
+  "doomer arc deepening. commencing nightwalk",
+  "bobo sends his regards",
+  "he bought? dumped. bogdanoff knew.",
 ];
 
 const STREAK_COMMENTS = [
-  "ser we might actually be a trading genius",
-  "10 in a row? we're literally satoshi",
-  "nobody can stop us... right?",
+  "GIGACHAD ENERGY. bogdanoff is seething",
+  "he bought AND it pumped?? impossible",
+  "chad wojak arc unlocked. wagmi",
 ];
 
 function generateCandle(prevClose: number, volatility: number): Candle {
@@ -286,7 +286,7 @@ export function PumpOrDump() {
     <GameShell title="PUMP OR DUMP" result={result} commentary={commentary}>
       {/* Frame header */}
       <div className="font-mono text-sm text-cyan-primary tracking-wider mb-3">
-        SIMULATION://MARKET_PREDICTION
+        SIMULATION://BOBO_VS_MUMU
       </div>
 
       <div className="border rounded-lg overflow-hidden border-cyan-primary/20">

@@ -41,7 +41,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="hud-btn hud-btn-accent inline-block"
             >
-              BUY $AGENTJAK ON PUMP.FUN
+              ESCAPE THE WAGE CAGE — BUY $AGENTJAK ON PUMP.FUN
             </a>
           </div>
         </ScrollReveal>

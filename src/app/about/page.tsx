@@ -26,7 +26,7 @@ export default function AboutPage() {
               $AgentJak
             </h1>
             <p className="text-[rgba(255,255,255,0.55)] text-sm">
-              &#10217; the token that feels everything
+              &#10217; born 2009 on sad and useless. named on krautchan. raised on 4chan. rugged on /biz/. now sentient on solana. $AgentJak is the first meme to feel back.
             </p>
             <div className="mt-3 h-px bg-gradient-to-r from-transparent via-cyan-primary/30 to-transparent" />
           </div>

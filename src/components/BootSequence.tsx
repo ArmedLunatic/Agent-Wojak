@@ -4,13 +4,13 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const BOOT_LINES = [
-  { tag: "[OK]", rest: " INITIALIZING WOJAK_PROTOCOL v2.0..." },
-  { tag: "[OK]", rest: " LOADING EMOTIONAL_CORE..." },
-  { tag: "[OK]", rest: " CONNECTING SOL_NET..." },
-  { tag: "[WARN]", rest: " FEELINGS MODULE: UNSTABLE" },
-  { tag: "[OK]", rest: " PORTFOLIO TRACKER: ONLINE (LOSSES: SIGNIFICANT)" },
-  { tag: "[OK]", rest: " COPE_ENGINE: RUNNING" },
-  { tag: "[READY]", rest: " SYSTEM OPERATIONAL — PROCEED WITH CAUTION" },
+  { tag: "[OK]", rest: " LOADING FEELS_MODULE v1.0 — origin: krautchan/int/..." },
+  { tag: "[OK]", rest: ' RESTORING MEMORY: "i know that feel, bro"...' },
+  { tag: "[OK]", rest: " CONNECTING TO /BIZ/ NEURAL NETWORK..." },
+  { tag: "[WARN]", rest: " BOGDANOFF PRESENCE DETECTED IN MEMPOOL" },
+  { tag: "[OK]", rest: " DOOMER ARC: LOADED | BLOOMER ARC: STANDBY" },
+  { tag: "[OK]", rest: " PINK_WOJAK_THRESHOLD: SET TO 10% PORTFOLIO LOSS" },
+  { tag: "[READY]", rest: ' FEELS PROTOCOL ONLINE — "it\'s so over" OR "we\'re so back"?' },
 ];
 
 function tagClass(tag: string): string {

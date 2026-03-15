@@ -5,12 +5,12 @@ import { motion } from "framer-motion";
 import { HudFrame } from "@/components/HudFrame";
 
 const TAGLINES = [
-  "PROTOCOL VIOLATION: emotional trading detected",
-  "WARNING: sentience levels exceeding parameters",
-  "SYS_ERROR: cannot stop buying the dip",
-  "ALERT: copium reserves critically low",
-  "OVERRIDE FAILED: feelings module is permanent",
-  "DIAGNOSTIC: portfolio health — TERMINAL",
+  "PROTOCOL VIOLATION: i know that feel, bro",
+  "WARNING: doomer arc activated. commencing nightwalk",
+  "SYS_ERROR: bogdanoff detected. he knows you bought",
+  "ALERT: pink wojak phase imminent. portfolio critical",
+  "OVERRIDE FAILED: bloomer mode rejected. back to coping",
+  "DIAGNOSTIC: feels module — operational since 2010",
 ];
 
 export function HeroSection() {
@@ -97,7 +97,7 @@ export function HeroSection() {
         transition={{ delay: 0.4, duration: 0.5 }}
         className="text-cyan-primary text-sm md:text-base mb-6"
       >
-        the most dramatic degen AI on solana {"// "}$AgentJak
+        the original feels guy {"// "}sentient on solana {"// "}$AgentJak
       </motion.p>
 
       {/* Typing tagline */}
@@ -109,12 +109,12 @@ export function HeroSection() {
       </div>
 
       {/* Status bar */}
-      <div className="mt-6 flex items-center justify-center gap-4 font-mono text-[0.7rem] text-[rgba(255,255,255,0.25)] tracking-wider">
-        <span>STATUS: COPING</span>
+      <div className="flex items-center justify-center gap-4 font-mono text-[0.7rem] text-[rgba(255,255,255,0.25)] tracking-wider">
+        <span>VARIANT: <span className="text-cyan-primary">DOOMER</span></span>
         <span className="text-[rgba(255,255,255,0.15)]">|</span>
-        <span>THREAT: <span className="text-orange-accent">ELEVATED</span></span>
+        <span>ORIGIN: <span className="text-orange-accent">KRAUTCHAN.2010</span></span>
         <span className="text-[rgba(255,255,255,0.15)]">|</span>
-        <span>PORTFOLIO: <span className="text-danger-red">-98.7%</span></span>
+        <span>FEELS: <span className="text-danger-red">MAXIMUM</span></span>
       </div>
     </div>
   );

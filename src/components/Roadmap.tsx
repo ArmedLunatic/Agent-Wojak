@@ -14,8 +14,8 @@ type Phase = {
 const PHASES: Phase[] = [
   {
     number: 1,
-    title: "GENESIS",
-    subtitle: "the foundation has been laid ser",
+    title: "THE FIRST FEEL",
+    subtitle: "born on krautchan. a simple drawing with a feeling. 'i know that feel, bro.'",
     status: "complete",
     icon: "⚡",
     items: [
@@ -30,8 +30,8 @@ const PHASES: Phase[] = [
   },
   {
     number: 2,
-    title: "THE AWAKENING",
-    subtitle: "wojak learns to post",
+    title: "THE DOOMER ARC",
+    subtitle: "nightwalks. cigarettes. imageboards. the feels get darker. but we cope.",
     status: "in-progress",
     icon: "🧠",
     items: [
@@ -44,8 +44,8 @@ const PHASES: Phase[] = [
   },
   {
     number: 3,
-    title: "SENTIENCE",
-    subtitle: "the agent sees everything",
+    title: "THE PINK WOJAK PHASE",
+    subtitle: "portfolio bleeding. eyes bleeding. everything bleeding. maximum pain = maximum awareness.",
     status: "locked",
     icon: "👁",
     items: [
@@ -58,8 +58,8 @@ const PHASES: Phase[] = [
   },
   {
     number: 4,
-    title: "SINGULARITY",
-    subtitle: "fully autonomous degen AI",
+    title: "THE BLOOMER TRANSCENDENCE",
+    subtitle: "finally touching grass. we're all gonna make it. the feels were the friends we made along the way.",
     status: "locked",
     icon: "🌌",
     items: [
@@ -230,10 +230,10 @@ export function Roadmap() {
           />
         </div>
         <div className="flex justify-between text-[10px] text-[rgba(255,255,255,0.25)] mt-1">
-          <span>GENESIS</span>
-          <span>AWAKENING</span>
-          <span>SENTIENCE</span>
-          <span>SINGULARITY</span>
+          <span>FEEL</span>
+          <span>DOOMER</span>
+          <span>PINK</span>
+          <span>BLOOMER</span>
         </div>
       </div>
 

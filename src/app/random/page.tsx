@@ -9,7 +9,7 @@ export default function RandomPage() {
         <div className="text-center mb-8">
           <h1 className="text-3xl font-display text-cyan-primary tracking-wider mb-2">RNG ORACLE</h1>
           <p className="text-[rgba(255,255,255,0.55)] text-sm">
-            &#10217; pay the oracle. receive your number. simple as.
+            &#10217; the bogdanoffs know your number. pay 0.1 SOL to intercept their transmission.
           </p>
         </div>
         <ScrollReveal>

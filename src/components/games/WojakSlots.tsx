@@ -18,21 +18,21 @@ const SYMBOLS = [
 const BET_PRESETS = [10, 50, 100];
 
 const WIN_COMMENTS = [
-  "ser... we're actually gonna make it...",
-  "WAGMI!!! DIAMOND HANDS FOREVER!!!",
-  "lfg ser the slots are paying out today",
+  "escaped the wage cage. for now.",
+  "mumu smiled upon you today, fren",
+  "bloomer mode activated. we're so back",
 ];
 
 const LOSE_COMMENTS = [
-  "another pull another rug...",
-  "i'm never financially recovering from this",
-  "ser... my portfolio... it's gone...",
+  "back in the cage, wagie",
+  "doomer arc deepening. commencing nightwalk",
+  "i know that feel, bro... i know that feel",
 ];
 
 const BIG_WIN_COMMENTS = [
-  "HOLY BASED... WE'RE ALL GONNA MAKE IT!!!",
-  "ser the moon... i can see it...",
-  "PEPE BLESSED US TODAY",
+  "GIGACHAD ENERGY. broke free from the wage cage",
+  "he pulled AND it paid?? bogdanoff in shambles",
+  "chad wojak arc unlocked. wagmi",
 ];
 
 // Build weighted pool for random selection
@@ -193,7 +193,7 @@ export function WojakSlots() {
     <GameShell title="WOJAK SLOTS" result={result} commentary={commentary}>
       {/* Frame header */}
       <div className="font-mono text-sm text-cyan-primary tracking-wider mb-3">
-        SIMULATION://SLOT_MACHINE
+        SIMULATION://WAGE_CAGE_ESCAPE
       </div>
 
       {/* Terminal window frame */}

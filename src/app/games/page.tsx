@@ -8,19 +8,19 @@ const GAMES = [
     title: "Rug Pull Roulette",
     icon: "🎡",
     href: "/games/roulette",
-    description: "spin the wheel. dodge the rug. maybe moon.",
+    description: "the bogdanoffs control the wheel. he spun? dump it. test your fate against the puppet masters who have rugged civilizations.",
   },
   {
     title: "Pump or Dump",
     icon: "📈",
     href: "/games/pump-or-dump",
-    description: "read the chart. trust your gut. streak or get rekt.",
+    description: "bobo and mumu are fighting again. pick a side, fren. predict the next candle before bogdanoff calls the hotline.",
   },
   {
     title: "Wojak Slots",
     icon: "🎰",
     href: "/games/slots",
-    description: "pull the lever. match the symbols. cope or moon.",
+    description: "wagie wagie pull the lever. escape the wage cage or lose it all trying. every spin is a cope mechanism.",
   },
 ];
 

@@ -20,21 +20,21 @@ const SEGMENTS = [
 const BET_PRESETS = [10, 50, 100];
 
 const WIN_COMMENTS = [
-  "based spin ser... we eating tonight",
-  "WAGMI the wheel loves us today",
-  "ser... is this what making it feels like?",
+  "bloomer mode activated. we're so back",
+  "mumu smiled upon you today, fren",
+  "i know that feel... and it's euphoria",
 ];
 
 const RUG_COMMENTS = [
-  "i... i can't feel my portfolio...",
-  "another day another rug ser...",
-  "why do i keep spinning... ngmi",
+  "he bought? dumped. bogdanoff sends his regards",
+  "pink wojak phase activated. eyes bleeding",
+  "it's so over. the bogdanoffs got us again",
 ];
 
 const SMALL_WIN_COMMENTS = [
-  "well... at least we didn't get rugged...",
-  "copium levels: maximum",
-  "ser it could have been worse... right?",
+  "coping. seething. but still here",
+  "not great not terrible. the eternal cope",
+  "this is fine. everything is fine. (it's not fine)",
 ];
 
 /** Pick a segment index with weighting — bad outcomes are slightly more likely */
@@ -228,7 +228,7 @@ export function RugPullRoulette() {
     <GameShell title="RUG PULL ROULETTE" result={result} commentary={commentary}>
       {/* Frame header */}
       <div className="font-mono text-sm text-cyan-primary tracking-wider mb-3">
-        SIMULATION://RUG_ROULETTE
+        SIMULATION://BOGDANOFF_WHEEL
       </div>
 
       <div
