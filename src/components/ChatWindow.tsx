@@ -88,13 +88,22 @@ export function ChatWindow() {
         </AnimatePresence>
         {loading && (
           <div className="flex justify-start">
-            <motion.div
-              animate={{ opacity: [0.4, 1, 0.4] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-              className="bg-green-950/50 text-green-600 px-4 py-2 rounded border border-green-900/50"
-            >
-              wojak is feeling things...
-            </motion.div>
+            <div className="bg-green-950/50 text-green-400 px-4 py-3 rounded border border-green-900/50 flex items-center gap-1">
+              <span className="text-xs text-green-600 mr-2">WOJAK://</span>
+              {[0, 1, 2].map((i) => (
+                <motion.span
+                  key={i}
+                  className="inline-block w-2 h-2 rounded-full bg-green-400"
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{
+                    duration: 0.6,
+                    repeat: Infinity,
+                    delay: i * 0.15,
+                    ease: "easeInOut",
+                  }}
+                />
+              ))}
+            </div>
           </div>
         )}
         <div ref={messagesEndRef} />

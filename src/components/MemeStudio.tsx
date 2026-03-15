@@ -128,6 +128,18 @@ export function MemeStudio() {
         </div>
       </div>
 
+      {/* Skeleton loading placeholder */}
+      {loading && !memeUrl && (
+        <div className="border border-green-900 rounded-lg p-4">
+          <div className="relative w-full max-w-md mx-auto h-[300px] bg-green-900/20 rounded-lg animate-pulse overflow-hidden">
+            <div className="absolute inset-0 bg-[repeating-linear-gradient(0deg,rgba(0,255,65,0.03)_0px,rgba(0,255,65,0.03)_1px,transparent_1px,transparent_3px)]" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="text-green-700 text-sm font-mono">RENDERING MEME...</span>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Result */}
       <AnimatePresence>
         {memeUrl && (

@@ -38,10 +38,15 @@ export function Gallery() {
 
   if (!loaded) {
     return (
-      <div className="text-center py-20">
-        <span className="text-green-600 animate-pulse text-lg">
-          {">"} LOADING ARCHIVES...
-        </span>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {Array.from({ length: 6 }).map((_, i) => (
+          <div
+            key={i}
+            className="relative aspect-square bg-green-900/20 rounded-lg animate-pulse overflow-hidden border border-green-900/50"
+          >
+            <div className="absolute inset-0 bg-[repeating-linear-gradient(0deg,rgba(0,255,65,0.03)_0px,rgba(0,255,65,0.03)_1px,transparent_1px,transparent_3px)]" />
+          </div>
+        ))}
       </div>
     );
   }
