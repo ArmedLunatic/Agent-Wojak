@@ -1,27 +1,30 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const BOOT_LINES = [
-  "> INITIALIZING AGENT WOJAK v1.0...",
-  "> CONNECTING TO SOLANA MAINNET...",
-  "> LOADING FEELINGS MODULE... ",
-  "> CALIBRATING MOOD: VOLATILE",
-  "> STATUS: ONLINE",
-  ">",
-  "> ENTERING THE MATRIX...",
+  { tag: "[OK]", rest: " INITIALIZING WOJAK_PROTOCOL v2.0..." },
+  { tag: "[OK]", rest: " LOADING EMOTIONAL_CORE..." },
+  { tag: "[OK]", rest: " CONNECTING SOL_NET..." },
+  { tag: "[WARN]", rest: " FEELINGS MODULE: UNSTABLE" },
+  { tag: "[OK]", rest: " PORTFOLIO TRACKER: ONLINE (LOSSES: SIGNIFICANT)" },
+  { tag: "[OK]", rest: " COPE_ENGINE: RUNNING" },
+  { tag: "[READY]", rest: " SYSTEM OPERATIONAL — PROCEED WITH CAUTION" },
 ];
 
-const PROGRESS_BAR_CHARS = "\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588";
-const PROGRESS_BAR_FULL = "[" + PROGRESS_BAR_CHARS + "] 100%";
+function tagClass(tag: string): string {
+  if (tag === "[OK]") return "text-cyan-primary";
+  if (tag === "[WARN]") return "text-orange-accent";
+  if (tag === "[READY]") return "text-success-green";
+  return "text-cyan-primary";
+}
 
 export function BootSequence() {
   const [show, setShow] = useState(false);
-  const [visibleLines, setVisibleLines] = useState<string[]>([]);
-  const [progressText, setProgressText] = useState("");
+  const [visibleLines, setVisibleLines] = useState<number[]>([]);
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
-  const [showCursor, setShowCursor] = useState(true);
+  const [progress, setProgress] = useState(0);
   const [isExiting, setIsExiting] = useState(false);
 
   // Check sessionStorage on mount
@@ -34,66 +37,36 @@ export function BootSequence() {
     }
   }, []);
 
-  // Blinking cursor
+  // Animate progress bar to 100% once all lines are revealed
   useEffect(() => {
-    if (!show) return;
-    const cursorInterval = setInterval(() => {
-      setShowCursor((prev) => !prev);
-    }, 400);
-    return () => clearInterval(cursorInterval);
-  }, [show]);
-
-  // Animate the progress bar character by character
-  const animateProgressBar = useCallback(() => {
-    let charIndex = 0;
-    const interval = setInterval(() => {
-      if (charIndex <= PROGRESS_BAR_CHARS.length) {
-        const filled = PROGRESS_BAR_CHARS.slice(0, charIndex);
-        const empty = "\u2591".repeat(PROGRESS_BAR_CHARS.length - charIndex);
-        const pct = Math.round((charIndex / PROGRESS_BAR_CHARS.length) * 100);
-        setProgressText("[" + filled + empty + "] " + pct + "%");
-        charIndex++;
-      } else {
-        clearInterval(interval);
-        // Progress bar done, move to next line
-        setProgressText(PROGRESS_BAR_FULL);
-        setCurrentLineIndex(3);
-      }
-    }, 50);
-    return () => clearInterval(interval);
-  }, []);
+    if (visibleLines.length === BOOT_LINES.length && !isExiting) {
+      const raf = requestAnimationFrame(() => setProgress(100));
+      return () => cancelAnimationFrame(raf);
+    }
+  }, [visibleLines.length, isExiting]);
 
   // Line-by-line reveal
   useEffect(() => {
     if (!show || isExiting) return;
 
     if (currentLineIndex >= BOOT_LINES.length) {
-      // All lines done, begin exit
+      // All lines done, begin exit after progress bar fills
       const exitTimer = setTimeout(() => {
         setIsExiting(true);
         sessionStorage.setItem("wojak-booted", "true");
-        setTimeout(() => setShow(false), 600);
-      }, 400);
+        setTimeout(() => setShow(false), 400);
+      }, 700);
       return () => clearTimeout(exitTimer);
-    }
-
-    // Special handling for the progress bar line (index 2)
-    if (currentLineIndex === 2) {
-      setVisibleLines((prev) => [...prev, BOOT_LINES[2]]);
-      const pbTimer = setTimeout(() => {
-        animateProgressBar();
-      }, 200);
-      return () => clearTimeout(pbTimer);
     }
 
     const delay = currentLineIndex === 0 ? 500 : 350;
     const timer = setTimeout(() => {
-      setVisibleLines((prev) => [...prev, BOOT_LINES[currentLineIndex]]);
+      setVisibleLines((prev) => [...prev, currentLineIndex]);
       setCurrentLineIndex((prev) => prev + 1);
     }, delay);
 
     return () => clearTimeout(timer);
-  }, [show, currentLineIndex, isExiting, animateProgressBar]);
+  }, [show, currentLineIndex, isExiting]);
 
   if (!show) return null;
 
@@ -102,67 +75,42 @@ export function BootSequence() {
       {show && (
         <motion.div
           key="boot-overlay"
-          initial={{ opacity: 1 }}
-          exit={{ opacity: 0, y: -60 }}
-          transition={{ duration: 0.6, ease: "easeInOut" }}
-          className="fixed inset-0 z-[9999] bg-black flex items-center justify-center"
-          style={{
-            animation: "crt-flicker 0.15s infinite alternate",
-          }}
+          initial={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.98 }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+          className="fixed inset-0 z-[9999] bg-bg-deep flex items-center justify-center"
         >
-          {/* CRT scanline overlay */}
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background:
-                "repeating-linear-gradient(0deg, rgba(0,255,65,0.03) 0px, rgba(0,255,65,0.03) 1px, transparent 1px, transparent 3px)",
-            }}
-          />
-
-          {/* CRT vignette */}
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background:
-                "radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.6) 100%)",
-            }}
-          />
-
           {/* Terminal content */}
           <div className="relative z-10 font-mono text-sm md:text-base px-6 max-w-xl w-full">
-            {visibleLines.map((line, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.1 }}
-                className="mb-1"
-              >
-                <span
-                  className="text-[#00FF41]"
-                  style={{
-                    textShadow: "0 0 8px rgba(0,255,65,0.6), 0 0 20px rgba(0,255,65,0.3)",
-                  }}
+            {visibleLines.map((lineIdx) => {
+              const line = BOOT_LINES[lineIdx];
+              return (
+                <motion.div
+                  key={lineIdx}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.1 }}
+                  className="mb-1"
                 >
-                  {/* For the progress bar line, append the animated progress */}
-                  {i === 2 ? line + progressText : line}
-                </span>
-                {/* Blinking cursor on the last visible line */}
-                {i === visibleLines.length - 1 && (
-                  <span
-                    className="text-[#00FF41] ml-0.5"
-                    style={{
-                      opacity: showCursor ? 1 : 0,
-                      textShadow: "0 0 8px rgba(0,255,65,0.6)",
-                    }}
-                  >
-                    _
-                  </span>
-                )}
-              </motion.div>
-            ))}
-          </div>
+                  <span className={tagClass(line.tag)}>{line.tag}</span>
+                  <span className="text-[rgba(255,255,255,0.55)]">{line.rest}</span>
+                </motion.div>
+              );
+            })}
 
+            {/* Progress bar */}
+            {visibleLines.length > 0 && (
+              <div className="mt-4 h-0.5 w-full bg-white/10 rounded overflow-hidden">
+                <div
+                  className="h-full bg-cyan-primary rounded"
+                  style={{
+                    width: `${progress}%`,
+                    transition: "width 0.5s ease-out",
+                  }}
+                />
+              </div>
+            )}
+          </div>
         </motion.div>
       )}
     </AnimatePresence>
