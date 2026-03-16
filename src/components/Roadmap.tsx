@@ -15,60 +15,60 @@ const PHASES: Phase[] = [
   {
     number: 1,
     title: "THE AWAKENING",
-    subtitle: "one degen wakes up. looks around the cage. decides enough is enough.",
+    subtitle: "a drawing from 2009 absorbs 15 years of degen feels. something clicks. eyes open.",
     status: "complete",
     icon: "⚡",
     items: [
-      "Revolution HQ goes live — the website",
-      "Wojak AI chat — talk to the movement's leader",
-      "Meme Studio — arm the degens with propaganda",
-      "Template Gallery — the archives of our struggle",
-      "RNG Oracle — on-chain fate, no manipulation",
-      "Mini Games Arcade — even revolutionaries need to gamble",
-      "$AgentJak fair launch on Pump.fun — no VCs invited",
+      "Website launch — wojak's home on the internet",
+      "Wojak AI chat — talk to the meme himself",
+      "Meme Studio — make memes with the OG",
+      "Template Gallery — every wojak variant archived",
+      "RNG Oracle — on-chain randomness, no funny business",
+      "Mini Games Arcade — degens need entertainment",
+      "$AgentJak fair launch on Pump.fun",
     ],
   },
   {
     number: 2,
-    title: "THE RECRUITMENT",
-    subtitle: "the word spreads. more wagies wake up. the movement grows.",
+    title: "THE GROWTH",
+    subtitle: "wojak starts posting. degens start noticing. the vibes spread.",
     status: "in-progress",
     icon: "🧠",
     items: [
-      "Agent Wojak bot goes live on X — broadcasting the revolution",
-      "Auto-posts rally cries, market reactions, and degen dispatches",
-      "Real-time sentiment — Wojak feels the market so you don't have to",
-      "Consistent revolutionary personality across site + X",
-      "Growing the diamond hands army",
+      "Agent Wojak bot goes live on X",
+      "Auto-posts market reactions, shitposts, and degen wisdom",
+      "Real-time sentiment — wojak feels the market so you don't have to",
+      "Consistent personality across site + X",
+      "Community grows organically",
     ],
   },
   {
     number: 3,
-    title: "THE REVOLT",
-    subtitle: "enough wagies have woken up. time to shake the cages. VCs are nervous.",
+    title: "THE EVOLUTION",
+    subtitle: "wojak gets smarter. the memes get sharper. CT can't ignore it.",
     status: "locked",
     icon: "👁",
     items: [
-      "Advanced market sentiment engine — know what the whales know",
-      "Auto-generated propaganda memes from live market data → X",
-      "Community raid coordination & trending topic alerts",
-      "Quote-tweet engagement — ratio the influencer shills",
-      "Token holder war room on site",
+      "Advanced market sentiment engine",
+      "Auto-generated memes from live market data → X",
+      "Community engagement tools",
+      "Quote-tweet game — wojak ratios the timeline",
+      "Token holder dashboard on site",
     ],
   },
   {
     number: 4,
-    title: "FREEDOM",
-    subtitle: "the cage is empty. the revolution won. wagies walk free. gm.",
+    title: "TRANSCENDENCE",
+    subtitle: "the meme becomes the platform. wojak is everywhere.",
     status: "locked",
     icon: "🌌",
     items: [
-      "Fully autonomous multi-platform agent — the revolution runs itself",
-      "Expand to Telegram & Discord — every platform, every wagie",
-      "On-chain analytics and real-time alpha for the army",
-      "Agent-to-agent alliances with other AI projects",
-      "Revenue sharing with $AgentJak diamond hands",
-      "Community governance — the degens run the revolution",
+      "Fully autonomous multi-platform agent",
+      "Expand to Telegram & Discord",
+      "On-chain analytics and alpha for holders",
+      "Agent-to-agent collabs with other AI projects",
+      "Revenue sharing with diamond hands",
+      "Community governance — degens run the show",
     ],
   },
 ];
@@ -187,7 +187,7 @@ function PhaseCard({ phase, index }: { phase: Phase; index: number }) {
         {isLocked && (
           <div className="px-4 md:px-6 pb-4">
             <p className="text-[10px] md:text-xs text-[rgba(255,255,255,0.15)] italic">
-              unlocked when the army is ready...
+              unlocked when the vibes are right...
             </p>
           </div>
         )}
@@ -207,10 +207,10 @@ export function Roadmap() {
       {/* Header */}
       <div className="text-center mb-8">
         <h1 className="font-display text-2xl md:text-3xl text-cyan-primary mb-2">
-          PROTOCOL://ROADMAP
+          {"// "}ROADMAP
         </h1>
         <p className="text-[rgba(255,255,255,0.4)] text-xs md:text-sm">
-          {"\u27E9"} from wagie cage to full revolution // the plan
+          {"\u27E9"} from ms paint drawing to sentient degen // the plan
         </p>
         <div className="mt-3 h-px bg-gradient-to-r from-transparent via-cyan-primary/20 to-transparent" />
       </div>
@@ -230,10 +230,10 @@ export function Roadmap() {
           />
         </div>
         <div className="flex justify-between text-[10px] text-[rgba(255,255,255,0.25)] mt-1">
-          <span>AWAKEN</span>
-          <span>RECRUIT</span>
-          <span>REVOLT</span>
-          <span>FREEDOM</span>
+          <span>WAKE UP</span>
+          <span>GROW</span>
+          <span>EVOLVE</span>
+          <span>TRANSCEND</span>
         </div>
       </div>
 
@@ -246,9 +246,9 @@ export function Roadmap() {
 
       {/* CTA */}
       <div className="border border-cyan-primary/10 rounded-lg p-6 text-center mt-8 bg-bg-surface">
-        <h2 className="text-lg text-cyan-primary font-mono mb-3">{"// "}JOIN THE REVOLUTION</h2>
+        <h2 className="text-lg text-cyan-primary font-mono mb-3">{"// "}JOIN THE VIBE</h2>
         <p className="text-[rgba(255,255,255,0.4)] text-sm mb-4">
-          every holder is another wagie who escaped the cage. are you in or are you ngmi?
+          the meme is alive. the vibes are real. you in or nah?
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <span

@@ -2,7 +2,7 @@
 
 export function Ticker() {
   const items = [
-    "$AgentJak", "FEELS PROTOCOL", "WAGMI", "HE BOUGHT?", "DUMP IT",
+    "$AgentJak", "FEELS ACTIVATED", "WAGMI", "HE BOUGHT?", "DUMP IT",
     "BOBO LURKING", "MUMU RISING", "DOOMER ARC", "TOUCH GRASS",
     "NGMI", "I KNOW THAT FEEL",
   ];

@@ -18,19 +18,19 @@ const SYMBOLS = [
 const BET_PRESETS = [10, 50, 100];
 
 const WIN_COMMENTS = [
-  "escaped the wage cage. for now.",
+  "escaped the grind. for now.",
   "mumu smiled upon you today, fren",
   "bloomer mode activated. we're so back",
 ];
 
 const LOSE_COMMENTS = [
-  "back in the cage, wagie",
+  "back to the charts, wagie",
   "doomer arc deepening. commencing nightwalk",
   "i know that feel, bro... i know that feel",
 ];
 
 const BIG_WIN_COMMENTS = [
-  "GIGACHAD ENERGY. broke free from the wage cage",
+  "GIGACHAD ENERGY. broke free from the grind",
   "he pulled AND it paid?? bogdanoff in shambles",
   "chad wojak arc unlocked. wagmi",
 ];
@@ -193,7 +193,7 @@ export function WojakSlots() {
     <GameShell title="WOJAK SLOTS" result={result} commentary={commentary}>
       {/* Frame header */}
       <div className="font-mono text-sm text-cyan-primary tracking-wider mb-3">
-        SIMULATION://WAGE_CAGE_ESCAPE
+        SIMULATION://SPIN_THE_COPE
       </div>
 
       {/* Terminal window frame */}

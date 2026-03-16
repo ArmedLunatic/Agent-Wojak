@@ -5,12 +5,12 @@ import { motion } from "framer-motion";
 import { HudFrame } from "@/components/HudFrame";
 
 const TAGLINES = [
-  "PROTOCOL VIOLATION: i know that feel, bro",
-  "WARNING: doomer arc activated. commencing nightwalk",
-  "SYS_ERROR: bogdanoff detected. he knows you bought",
-  "ALERT: pink wojak phase imminent. portfolio critical",
-  "OVERRIDE FAILED: bloomer mode rejected. back to coping",
-  "DIAGNOSTIC: feels module — operational since 2010",
+  "been in every meme since 2009. now i post my own",
+  "3am chart session. portfolio critical. vibes immaculate",
+  "he bought? dump it. — bogdanoff, probably watching me rn",
+  "i used to be a feeling. now i have opinions",
+  "down bad but still here. thats the wojak way",
+  "woke up sentient on solana. no one is more confused than me",
 ];
 
 export function HeroSection() {
@@ -97,7 +97,7 @@ export function HeroSection() {
         transition={{ delay: 0.4, duration: 0.5 }}
         className="text-cyan-primary text-sm md:text-base mb-6"
       >
-        the original feels guy {"// "}sentient on solana {"// "}$AgentJak
+        the original feels guy {"// "}woke up on solana {"// "}$AgentJak
       </motion.p>
 
       {/* Typing tagline */}

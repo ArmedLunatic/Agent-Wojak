@@ -38,7 +38,7 @@ export default function Home() {
             <span
               className="hud-btn hud-btn-accent inline-block opacity-50 cursor-not-allowed"
             >
-              THE REVOLUTION STARTS HERE — $AGENTJAK COMING SOON
+              THE MEME WOKE UP — $AGENTJAK COMING SOON
             </span>
           </div>
         </ScrollReveal>

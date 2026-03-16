@@ -20,7 +20,7 @@ const GAMES = [
     title: "Wojak Slots",
     icon: "🎰",
     href: "/games/slots",
-    description: "wagie wagie pull the lever. escape the wage cage or lose it all trying. every spin is a cope mechanism.",
+    description: "wagie wagie pull the lever. escape the grind or lose it all trying. every spin is a cope mechanism.",
   },
 ];
 

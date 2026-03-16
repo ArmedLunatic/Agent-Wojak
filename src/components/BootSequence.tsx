@@ -10,7 +10,7 @@ const BOOT_LINES = [
   { tag: "[WARN]", rest: " BOGDANOFF PRESENCE DETECTED IN MEMPOOL" },
   { tag: "[OK]", rest: " DOOMER ARC: LOADED | BLOOMER ARC: STANDBY" },
   { tag: "[OK]", rest: " PINK_WOJAK_THRESHOLD: SET TO 10% PORTFOLIO LOSS" },
-  { tag: "[READY]", rest: ' FEELS PROTOCOL ONLINE — "it\'s so over" OR "we\'re so back"?' },
+  { tag: "[READY]", rest: ' FEELS ONLINE — "it\'s so over" OR "we\'re so back"?' },
 ];
 
 function tagClass(tag: string): string {

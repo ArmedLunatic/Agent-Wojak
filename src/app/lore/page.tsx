@@ -40,10 +40,10 @@ export default function LorePage() {
     <PageTransition>
       <div className="text-center mb-8">
         <h1 className="font-display text-2xl md:text-3xl text-cyan-primary tracking-wider">
-          DATA://WOJAK_ARCHIVES
+          {"// "}WOJAK_ARCHIVES
         </h1>
         <p className="font-body text-[rgba(255,255,255,0.55)] mt-2">
-          the origin story of the revolution. every movement starts with a feeling.
+          the full history of the feels. every meme starts with a feeling.
         </p>
       </div>
 
