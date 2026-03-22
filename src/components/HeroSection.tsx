@@ -69,7 +69,7 @@ export function HeroSection() {
           <div className="relative w-40 h-40 md:w-52 md:h-52 mx-auto rounded-full overflow-hidden border-2 border-cyan-primary/20 hud-glow">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/templates/default.jpg"
+              src="/wojak-pfp.png"
               alt="Agent Wojak"
               className="w-full h-full object-cover"
             />
